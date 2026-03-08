@@ -62,77 +62,15 @@ export default function HomePage() {
             <div className="relative">
               <div className="relative aspect-[9/16] max-w-sm mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-200 rounded-3xl transform rotate-3"></div>
-                <div className="relative bg-white rounded-3xl shadow-2xl p-4 border-8 border-gray-900">
-                  <div className="bg-gray-900 rounded-t-lg p-3 flex items-center justify-between">
-                    <div className="flex gap-1">
-                      <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                      <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                      <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                    </div>
-                    <div className="text-white text-xs font-medium">
-                      Installation Log
-                    </div>
-                    <div className="w-12"></div>
-                  </div>
-                  <div className="bg-white p-4 space-y-4">
-                    <div className="bg-blue-50 rounded-lg p-3">
-                      <div className="text-xs text-blue-600 font-semibold mb-1">
-                        Asset Verification
-                      </div>
-                      <div className="text-xs text-green-600 font-medium">
-                        Local Sync Active
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 rounded border-2 border-green-500 flex items-center justify-center">
-                          <svg
-                            className="w-3 h-3 text-green-500"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <span className="text-sm text-gray-700">
-                          Standardize Setup
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 rounded border-2 border-red-500 flex items-center justify-center">
-                          <svg
-                            className="w-4 h-4 text-red-500"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-                            />
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-                            />
-                          </svg>
-                        </div>
-                        <span className="text-sm text-gray-700">
-                          Photo Verification <span className="text-red-500">REQUIRED</span>
-                        </span>
-                      </div>
-                    </div>
-                    <button className="w-full bg-blue-600 text-white py-2 rounded-lg text-sm font-medium">
-                      Sync Installation Data
-                    </button>
-                  </div>
+                <div className="relative rounded-3xl shadow-2xl overflow-hidden border-8 border-gray-900 aspect-[9/16] bg-white">
+                  <Image
+                    src="/screenshot-admin.jpeg"
+                    alt="Field service app in action"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
                 </div>
               </div>
             </div>
