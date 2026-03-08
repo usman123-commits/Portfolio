@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
@@ -342,21 +343,30 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
+                src: "/screenshot-checklist.jpeg",
                 title: "Checklist enforcement during installation",
                 description: "Step 3. Verification with checked items",
               },
               {
+                src: "/screenshot-signature.jpeg",
                 title: "Client signature at completion",
                 description: "Client Acceptance with signature field",
               },
               {
+                src: "/screenshot-adminReassing.jpeg",
                 title: "Offline sync confirmation",
                 description: "Sync Complete - 100% Uploaded",
               },
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="bg-gray-100 rounded-lg aspect-[9/16] mb-4 flex items-center justify-center">
-                  <div className="text-gray-400 text-sm">App Screenshot</div>
+                <div className="relative rounded-lg aspect-[9/16] mb-4 overflow-hidden bg-gray-100">
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {item.title}
