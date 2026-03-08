@@ -10,19 +10,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${siteConfig.url}${siteConfig.links.caseStudy}`,
+      url: `${siteConfig.url}${siteConfig.links.caseStudies}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.9,
     },
     {
-      url: `${siteConfig.url}${siteConfig.links.process}`,
+      url: `${siteConfig.url}${siteConfig.links.services}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${siteConfig.url}${siteConfig.links.principles}`,
+      url: `${siteConfig.url}${siteConfig.links.about}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteConfig.url}${siteConfig.links.contact}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
-      priority: 0.7,
+      priority: 0.8,
     },
   ];
 

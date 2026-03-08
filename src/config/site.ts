@@ -5,15 +5,17 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://example.com",
   ogImage: "/og-image.jpg",
   links: {
-    caseStudy: "/case-study",
-    process: "/process",
-    principles: "/principles",
+    caseStudies: "/case-studies",
+    services: "/services",
+    about: "/about",
     contact: "/contact",
   },
   navItems: [
-    { title: "Capabilities", href: "/#capabilities" },
-    { title: "Process", href: "/process" },
-    { title: "Principles", href: "/principles" },
+    { title: "Home", href: "/" },
+    { title: "Case Studies", href: "/case-studies" },
+    { title: "Services", href: "/services" },
+    { title: "About", href: "/about" },
+    { title: "Contact", href: "/contact" },
   ],
 };
 

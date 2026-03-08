@@ -26,7 +26,7 @@ export default function HomePage() {
                 history.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button href={siteConfig.links.caseStudy} variant="primary">
+                <Button href={siteConfig.links.caseStudies} variant="primary">
                   View Case Study
                 </Button>
                 <Button href={siteConfig.links.contact} variant="secondary">
