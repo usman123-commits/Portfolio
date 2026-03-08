@@ -1,5 +1,8 @@
 import { Container } from "@/components/ui/Container";
 
+const CONTACT_EMAIL =
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "your@email.com";
+
 export const metadata = {
   title: "Privacy Policy",
   description: "How we handle your data and protect your privacy.",
@@ -16,8 +19,7 @@ export default function PrivacyPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
             Privacy Policy
           </h1>
-          {/* TODO: Replace with actual last updated date */}
-          <p className="text-sm text-gray-500 mb-12">Last updated: [Month Year]</p>
+          <p className="text-sm text-gray-500 mb-12">Last updated: March 9, 2026</p>
 
           <section className="mb-10">
             <h2 className="text-xl font-bold text-gray-900 mb-4">
@@ -66,12 +68,11 @@ export default function PrivacyPage() {
             <p className="text-gray-600 leading-relaxed">
               You may request deletion of any data submitted through the contact
               form by emailing us at{" "}
-              {/* TODO: Replace with real contact email */}
               <a
-                href="mailto:your@email.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="text-blue-600 hover:text-blue-700 underline"
               >
-                your@email.com
+                {CONTACT_EMAIL}
               </a>
               .
             </p>
@@ -81,12 +82,11 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-gray-900 mb-4">Contact</h2>
             <p className="text-gray-600 leading-relaxed">
               For any privacy-related questions, contact:{" "}
-              {/* TODO: Replace with real email */}
               <a
-                href="mailto:your@email.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="text-blue-600 hover:text-blue-700 underline"
               >
-                your@email.com
+                {CONTACT_EMAIL}
               </a>
             </p>
           </section>

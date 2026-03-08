@@ -6,6 +6,7 @@ export const metadata = {
   title: "Case Studies",
   description:
     "Real-world examples of field service apps and workflow systems built for data integrity and reliable operations.",
+  alternates: { canonical: `${siteConfig.url}/case-studies` },
 };
 
 const caseStudies = [

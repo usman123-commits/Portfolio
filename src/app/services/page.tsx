@@ -6,6 +6,7 @@ export const metadata = {
   title: "Services",
   description:
     "I design workflow systems that help teams capture data, automate operations, and maintain reliable processes.",
+  alternates: { canonical: `${siteConfig.url}/services` },
 };
 
 export default function ServicesPage() {

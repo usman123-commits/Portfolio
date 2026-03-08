@@ -23,14 +23,7 @@ export function getMetadata({
       template: `%s | ${siteConfig.name}`,
     },
     description: fullDescription,
-    keywords: [
-      "field service",
-      "offline apps",
-      "installation management",
-      "mobile app development",
-      "workflow automation",
-      "field service engineer",
-    ],
+    keywords: siteConfig.keywords,
     authors: [{ name: siteConfig.name }],
     creator: siteConfig.name,
     openGraph: {
@@ -42,7 +35,7 @@ export function getMetadata({
       description: fullDescription,
       images: [
         {
-          url: siteConfig.ogImage,
+          url: "/og",
           width: 1200,
           height: 630,
           alt: siteConfig.name,
@@ -53,7 +46,7 @@ export function getMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description: fullDescription,
-      images: [siteConfig.ogImage],
+      images: ["/og"],
     },
     robots: {
       index: true,
