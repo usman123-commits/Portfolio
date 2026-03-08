@@ -7,6 +7,12 @@ const CALENDLY_URL =
   process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/YOUR_USERNAME/30min";
 const CONTACT_EMAIL =
   process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "your@email.com";
+const WHATSAPP_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? "";
+const WHATSAPP_URL = WHATSAPP_PHONE ? `https://wa.me/${WHATSAPP_PHONE}` : "#";
+const FORMSPREE_FORM_ID = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID ?? "";
+const FORM_ENDPOINT = FORMSPREE_FORM_ID
+  ? `https://formspree.io/f/${FORMSPREE_FORM_ID}`
+  : "https://formspree.io/f/YOUR_FORM_ID";
 
 export function ContactContent() {
   const [formData, setFormData] = useState({
@@ -17,6 +23,8 @@ export function ContactContent() {
   });
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
+  const [calendlyLoaded, setCalendlyLoaded] = useState(false);
 
   useEffect(() => {
     if (document.querySelector('link[href*="calendly.com/assets/external/widget.css"]'))
@@ -30,6 +38,7 @@ export function ContactContent() {
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
+    script.onload = () => setCalendlyLoaded(true);
     document.body.appendChild(script);
   }, []);
 
@@ -50,11 +59,22 @@ export function ContactContent() {
     formData.serviceNeeded !== "" &&
     formData.message.trim() !== "";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setTouched({ fullName: true, company: true, serviceNeeded: true, message: true });
     if (!allFilled) return;
-    setSubmitted(true);
+    setSubmitError(false);
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Formspree error");
+      setSubmitted(true);
+    } catch {
+      setSubmitError(true);
+    }
   };
 
   const inputBase =
@@ -94,10 +114,18 @@ export function ContactContent() {
                 Pick a time that works for you. We&apos;ll talk about your current
                 workflow, what&apos;s not working, and what&apos;s possible.
               </p>
-              <div
-                className="calendly-inline-widget min-w-[320px] w-full h-[630px]"
-                data-url={CALENDLY_URL}
-              />
+              <div className="relative min-w-[320px] w-full min-h-[630px]">
+                {!calendlyLoaded && (
+                  <div
+                    className="animate-pulse bg-gray-100 rounded-lg h-[630px] w-full"
+                    aria-hidden
+                  />
+                )}
+                <div
+                  className={`calendly-inline-widget w-full h-[630px] min-h-[630px] ${!calendlyLoaded ? "invisible absolute inset-0" : ""}`}
+                  data-url={CALENDLY_URL}
+                />
+              </div>
               <p className="text-sm text-gray-600 mt-4">
                 Prefer email? →{" "}
                 <a
@@ -105,6 +133,14 @@ export function ContactContent() {
                   className="text-blue-600 hover:text-blue-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
                 >
                   {CONTACT_EMAIL}
+                </a>
+              </p>
+              <p className="text-sm text-gray-600 mt-2">
+                <a
+                  href={WHATSAPP_URL}
+                  className="text-blue-600 hover:text-blue-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+                >
+                  Or WhatsApp →
                 </a>
               </p>
             </div>
@@ -115,7 +151,37 @@ export function ContactContent() {
                 Send a Message
               </h2>
 
-              {!submitted ? (
+              {submitError ? (
+                <div className="flex flex-col items-center justify-center py-12 text-center">
+                  <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                    <svg
+                      className="w-8 h-8 text-red-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Something went wrong
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    Please email us directly.
+                  </p>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-medium bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                  >
+                    Email {CONTACT_EMAIL}
+                  </a>
+                </div>
+              ) : !submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-4 mt-2">
                   <div>
                     <label htmlFor="fullName" className={labelBase}>
