@@ -1,5 +1,4 @@
 import { AboutContent } from "./AboutContent";
-import { siteConfig } from "@/config/site";
 
 export const metadata = {
   title: "About",
