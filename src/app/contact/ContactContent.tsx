@@ -27,31 +27,47 @@ export function ContactContent() {
   const [calendlyLoaded, setCalendlyLoaded] = useState(false);
 
   useEffect(() => {
-    // If Calendly has already been loaded on the page (client-side navigation),
-    // mark it as ready and re-initialize the inline widget for the current node.
-    if (typeof window !== "undefined" && (window as any).Calendly) {
-      setCalendlyLoaded(true);
-      try {
-        (window as any).Calendly.initInlineWidget?.({
-          url: CALENDLY_URL,
-          parentElement: document.querySelector(
-            ".calendly-inline-widget"
-          ) as HTMLElement | null,
-        });
-      } catch {
-        // Ignore re-init errors; widget will still render if already bound.
+    const initWidgetOnce = () => {
+      const container = document.querySelector(".calendly-inline-widget") as HTMLElement | null;
+      if (container) {
+        container.innerHTML = "";
+        try {
+          (window as any).Calendly?.initInlineWidget?.({
+            url: CALENDLY_URL,
+            parentElement: container,
+          });
+        } catch {
+          // Ignore init errors.
+        }
       }
-      return;
+      setCalendlyLoaded(true);
+    };
+
+    const cleanup = () => {
+      const container = document.querySelector(".calendly-inline-widget");
+      if (container) container.innerHTML = "";
+    };
+
+    if (typeof window !== "undefined" && (window as any).Calendly) {
+      initWidgetOnce();
+      return cleanup;
     }
 
-    // If the script is already present, let its onload (from the first mount)
-    // handle setting state; nothing to do here.
     if (
       document.querySelector(
         'script[src*="calendly.com/assets/external/widget.js"]'
       )
     ) {
-      return;
+      const id = setInterval(() => {
+        if ((window as any).Calendly) {
+          clearInterval(id);
+          initWidgetOnce();
+        }
+      }, 50);
+      return () => {
+        clearInterval(id);
+        cleanup();
+      };
     }
 
     const link = document.createElement("link");
@@ -62,20 +78,10 @@ export function ContactContent() {
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
-    script.onload = () => {
-      setCalendlyLoaded(true);
-      try {
-        (window as any).Calendly?.initInlineWidget?.({
-          url: CALENDLY_URL,
-          parentElement: document.querySelector(
-            ".calendly-inline-widget"
-          ) as HTMLElement | null,
-        });
-      } catch {
-        // Ignore init errors; Calendly will still use its default behavior.
-      }
-    };
+    script.onload = () => initWidgetOnce();
     document.body.appendChild(script);
+
+    return cleanup;
   }, []);
 
   const handleChange = (
