@@ -27,8 +27,32 @@ export function ContactContent() {
   const [calendlyLoaded, setCalendlyLoaded] = useState(false);
 
   useEffect(() => {
-    if (document.querySelector('link[href*="calendly.com/assets/external/widget.css"]'))
+    // If Calendly has already been loaded on the page (client-side navigation),
+    // mark it as ready and re-initialize the inline widget for the current node.
+    if (typeof window !== "undefined" && (window as any).Calendly) {
+      setCalendlyLoaded(true);
+      try {
+        (window as any).Calendly.initInlineWidget?.({
+          url: CALENDLY_URL,
+          parentElement: document.querySelector(
+            ".calendly-inline-widget"
+          ) as HTMLElement | null,
+        });
+      } catch {
+        // Ignore re-init errors; widget will still render if already bound.
+      }
       return;
+    }
+
+    // If the script is already present, let its onload (from the first mount)
+    // handle setting state; nothing to do here.
+    if (
+      document.querySelector(
+        'script[src*="calendly.com/assets/external/widget.js"]'
+      )
+    ) {
+      return;
+    }
 
     const link = document.createElement("link");
     link.href = "https://assets.calendly.com/assets/external/widget.css";
@@ -38,7 +62,19 @@ export function ContactContent() {
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
-    script.onload = () => setCalendlyLoaded(true);
+    script.onload = () => {
+      setCalendlyLoaded(true);
+      try {
+        (window as any).Calendly?.initInlineWidget?.({
+          url: CALENDLY_URL,
+          parentElement: document.querySelector(
+            ".calendly-inline-widget"
+          ) as HTMLElement | null,
+        });
+      } catch {
+        // Ignore init errors; Calendly will still use its default behavior.
+      }
+    };
     document.body.appendChild(script);
   }, []);
 
