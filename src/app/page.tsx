@@ -152,7 +152,7 @@ export default function HomePage() {
             ].map((item, index) => (
               <div
                 key={index}
-                className={`bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200`}
+                className={`bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="w-12 h-12 bg-[var(--navy-50)] rounded-xl flex items-center justify-center mb-6">
@@ -268,7 +268,7 @@ export default function HomePage() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-[var(--surface-soft)] p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200"
+                className="bg-[var(--surface-soft)] p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="text-3xl mb-5">{item.icon}</div>
@@ -290,7 +290,7 @@ export default function HomePage() {
             }`}
           >
             {/* Card 1 */}
-            <div className="bg-white p-6 md:p-8 lg:p-12 rounded-2xl border border-[var(--border)] relative overflow-hidden hover:shadow-md transition-all duration-200">
+            <div className="bg-white p-6 md:p-8 lg:p-12 rounded-2xl border border-[var(--border)] relative overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
               <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-5">
                 SERVICE 01
@@ -309,7 +309,7 @@ export default function HomePage() {
 
             {/* Card 2 */}
             <div
-              className="bg-white p-6 md:p-8 lg:p-12 rounded-2xl border border-[var(--border)] relative overflow-hidden hover:shadow-md transition-all duration-200"
+              className="bg-white p-6 md:p-8 lg:p-12 rounded-2xl border border-[var(--border)] relative overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
               style={{ transitionDelay: "100ms" }}
             >
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />

@@ -23,22 +23,21 @@ const caseStudies = [
     href: "/case-studies/rededge",
   },
   {
-    id: "rental-property-operations",
+    id: "hostfully",
     tagline: "Workflow Automation",
     badgeStyle: "bg-amber-100 text-amber-700",
-    status: "In Development",
-    title: "Rental Property Operations — End-to-End Automation",
+    status: "Live · Real Client",
+    title: "Hostfully — Vacation Rental Automation",
     industry: "Short-Term Rental / Property Management",
     description:
-      "Every booking triggered a chain of manual work — checking cleaner availability, sending notifications, logging jobs, tracking clock-ins. Built a multi-workflow n8n system to automate the entire booking-to-clean pipeline, GPS-validated cleaner clock-ins, and extended checkout detection.",
+      "A Hostfully vacation rental operator was spending hours every day manually messaging guests, notifying the cleaning crew, and keeping booking data up to date. Built three n8n automation workflows to handle it all — triggered by Hostfully webhooks, zero manual effort.",
     highlights: [
-      "Booking ingestion from Hostfully → Google Sheets",
-      "Cleaner assignment + Google Calendar sync",
-      "GPS-validated clock-in via Google Forms",
-      "Extended checkout detection + auto-reschedule",
+      "Automated guest messaging at booking, check-in, and checkout",
+      "Cleaning crew auto-scheduled on every new booking",
+      "Booking data synced to Google Sheets in real time",
     ],
-    tags: ["n8n", "Hostfully", "Google Sheets", "Google Calendar", "Gmail", "GPS Validation"],
-    href: "/case-studies",
+    tags: ["n8n", "Hostfully API", "Webhooks", "Google Sheets", "Gmail"],
+    href: "/case-studies/hostfully",
   },
 ];
 
@@ -109,7 +108,7 @@ export function CaseStudiesContent() {
             {caseStudies.map((study, index) => (
               <article
                 key={study.id}
-                className="bg-white rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200 relative overflow-hidden flex flex-col"
+                className="bg-white rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden flex flex-col"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="h-[3px] bg-[var(--navy-500)] w-full flex-shrink-0" />

@@ -105,7 +105,7 @@ export function AboutContent() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200 relative overflow-hidden"
+                className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden"
                 style={{ transitionDelay: `${item.delay}ms` }}
               >
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
@@ -155,7 +155,7 @@ export function AboutContent() {
             ].map((item, index) => (
               <div
                 key={item.name}
-                className="rounded-2xl border border-[var(--border)] p-6 bg-[var(--surface-soft)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200"
+                className="rounded-2xl border border-[var(--border)] p-6 bg-[var(--surface-soft)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
                 style={{ transitionDelay: `${index * 60}ms` }}
               >
                 <span className="text-2xl block mb-3">{item.icon}</span>
@@ -212,7 +212,7 @@ export function AboutContent() {
             ].map((item, index) => (
               <div
                 key={item.step}
-                className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200 relative overflow-hidden"
+                className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />

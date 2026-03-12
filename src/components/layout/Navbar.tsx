@@ -15,9 +15,15 @@ const mobileNavItems = mobileNavOrder.map((href) =>
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
@@ -39,7 +45,11 @@ export function Navbar() {
   }, [mobileMenuOpen]);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[var(--border)] bg-white/95 backdrop-blur-sm">
+    <nav className={`sticky top-0 z-50 border-b transition-all duration-300 ${
+      scrolled
+        ? 'border-[var(--border)] bg-white/90 backdrop-blur-sm shadow-sm'
+        : 'border-[var(--border)] bg-white/95 backdrop-blur-sm'
+    }`}>
       <Container>
         <div className="flex h-16 items-center justify-between">
           <div className="flex justify-start min-w-0">
