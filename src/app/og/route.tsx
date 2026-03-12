@@ -31,7 +31,7 @@ export async function GET() {
             marginBottom: 24,
           }}
         >
-          FIELD SERVICE & AUTOMATION
+          OPERATA
         </div>
         <div
           style={{
@@ -52,7 +52,7 @@ export async function GET() {
             marginTop: 20,
           }}
         >
-          Purpose-built tools for operations teams
+          Purpose-built systems for operations teams
         </div>
         <div
           style={{

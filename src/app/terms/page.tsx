@@ -1,7 +1,8 @@
 import { Container } from "@/components/ui/Container";
 
+// TODO: Replace with professional email once domain is purchased
 const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "your@email.com";
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "bgmazak123@gmail.com";
 
 export const metadata = {
   title: "Terms of Service",
@@ -19,7 +20,7 @@ export default function TermsPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
             Terms of Service
           </h1>
-          <p className="text-sm text-gray-500 mb-12">Last updated: March 9, 2026</p>
+          <p className="text-sm text-gray-500 mb-12">Last updated: March 2025</p>
 
           <section className="mb-10">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Services</h2>

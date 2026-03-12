@@ -1,8 +1,11 @@
+// TODO: Update url when domain is purchased
 export const siteConfig = {
-  name: "Field Service Engineer",
+  name: "Operata",
+  title: "Operata — Field Service Apps & n8n Automation",
   description:
-    "Offline-ready field service apps built around real installation workflows. Structured checklists, photo documentation, and reliable offline usage for field teams.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://example.com",
+    "Operata builds field service applications and n8n workflow automation for operations teams tired of manual processes.",
+  author: "Usman Younes",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://operata.dev",
   ogImage: "/og-image.png",
   links: {
     caseStudies: "/case-studies",

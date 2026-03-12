@@ -11,34 +11,53 @@ export const metadata = {
 
 const caseStudies = [
   {
-    id: "installation-management",
-    title: "Installation Management System",
-    tagline: "Offline-ready field service app",
-    badgeColor: "blue" as const,
-    description:
-      "A production-tested system for installation teams with structured checklists, photo verification, and reliable offline sync. Built for data integrity and clear audit history.",
+    id: "rental-property-operations",
+    tagline: "Workflow Automation",
+    badgeColor: "amber" as const,
+    status: "In Development",
+    title: "Rental Property Operations — End-to-End Automation",
+    industryTag: "Short-Term Rental / Property Management",
+    problem:
+      "Every booking triggered a chain of manual work — checking cleaner availability, sending notifications, logging jobs, tracking clock-ins. Missed cleans, late arrivals, and extended checkouts were all handled reactively with no central system of record.",
+    solution:
+      "Built a multi-workflow n8n automation system integrated with Hostfully. When a booking arrives, it's automatically logged, a cleaner is assigned based on availability and property, Google Calendar events are created for both admin and cleaner, and a notification email is sent — all without anyone touching a spreadsheet. Extended checkouts trigger automatic schedule updates. Cleaner clock-ins via Google Form validate GPS proximity to the property and update job status in real time.",
+    outcome:
+      "Fully automated booking-to-clean pipeline — zero manual scheduling",
     highlights: [
-      "Admin + Installer roles",
-      "Structured checklist enforcement",
-      "Offline sync with validation",
-      "Photo verification and documentation",
-      "Client signature capture",
-      "Immutable completion reports",
+      "Booking ingestion from Hostfully → Google Sheets",
+      "Cleaner assignment + Google Calendar sync",
+      "GPS-validated clock-in via Google Forms",
+      "Extended checkout detection + auto-reschedule",
+    ],
+    tags: [
+      "n8n",
+      "Hostfully",
+      "Google Sheets",
+      "Google Calendar",
+      "Gmail",
+      "GPS Validation",
+      "Workflow Automation",
     ],
   },
   {
     id: "automated-job-completion",
     tagline: "Workflow Automation",
     badgeColor: "amber" as const,
+    status: "Completed",
     title: "Automated Job Completion Workflow",
     industryTag: "Field Service Operations",
     problem:
-      "Technicians completed jobs on paper. Office staff manually re-entered data into three separate systems — CRM, invoicing, and client notifications — taking 15+ hours per week.",
+      "Technicians completed jobs on paper. Office staff manually re-entered data into three separate systems — CRM, invoicing, and client notifications — consuming 15+ hours per week.",
     solution:
-      "Built an n8n workflow that triggers when a technician submits a mobile job form. It automatically updates the CRM record, generates a PDF job report, and sends a completion email to the client — all within seconds of form submission.",
+      "Built an n8n workflow triggered by mobile job form submission. It automatically updates the CRM, generates a PDF job report, and sends a client completion email — all within seconds of the technician submitting the form.",
     outcome: "15 hrs/week saved — zero manual data re-entry",
-    tags: ["n8n", "Webhook", "CRM Integration", "PDF Generation", "Email Automation"],
-    status: "Live",
+    tags: [
+      "n8n",
+      "Webhook",
+      "CRM Integration",
+      "PDF Generation",
+      "Email Automation",
+    ],
   },
 ];
 

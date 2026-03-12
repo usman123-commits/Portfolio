@@ -17,21 +17,23 @@ export function AboutContent() {
                 ABOUT ME
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                I Build Systems That Field Teams Actually Use
+                I Build Systems That Run Without You
               </h1>
-              {/* TODO: Replace with your personal details */}
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                I&apos;m Usman, an independent developer specializing in field
-                service applications and n8n workflow automation. I work with
-                operations teams who are tired of paper-based processes, missed
-                handoffs, and tools that don&apos;t talk to each other.
+                I&apos;m Usman Younes, the developer behind Operata. I build field
+                service applications and n8n workflow automation for operations
+                teams — the kind of teams dealing with manual scheduling,
+                disconnected tools, and processes that only work when someone
+                remembers to follow them. I work remotely with clients
+                internationally, delivering systems that run automatically so
+                your team can focus on the work, not the admin.
               </p>
               <div className="flex flex-wrap gap-3">
                 <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
-                  Worked on 3 projects
+                  Field Service & Automation
                 </span>
                 <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
-                  Field Service & Automation
+                  Remote · Available Worldwide
                 </span>
               </div>
             </div>
@@ -106,10 +108,10 @@ export function AboutContent() {
             {[
               { icon: "▲", name: "Next.js", role: "Web Applications" },
               { icon: "🔄", name: "n8n", role: "Workflow Automation" },
-              { icon: "📱", name: "React Native", role: "Mobile Apps" }, // TODO: remove if not applicable
-              { icon: "🐘", name: "PostgreSQL", role: "Database" },
-              { icon: "🔌", name: "REST APIs", role: "Integrations" },
-              { icon: "▲", name: "Vercel", role: "Deployment" },
+              { icon: "📱", name: "React Native", role: "Mobile Apps" },
+              { icon: "⚛️", name: "React.js", role: "Frontend" },
+              { icon: "🟢", name: "Node.js", role: "Backend & APIs" },
+              { icon: "📧", name: "Google Workspace", role: "Sheets, Calendar, Gmail Integration" },
             ].map((item) => (
               <div
                 key={item.name}
