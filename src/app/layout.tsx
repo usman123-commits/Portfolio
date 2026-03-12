@@ -3,6 +3,7 @@ import { DM_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { PageWrapper } from "@/components/ui/PageWrapper";
 import { getMetadata } from "@/lib/metadata";
 import {
   getPersonStructuredData,
@@ -57,7 +58,9 @@ export default function RootLayout({
         className={`${dmSans.variable} ${instrumentSerif.variable} antialiased`}
       >
         <Navbar />
-        {children}
+        <PageWrapper>
+          {children}
+        </PageWrapper>
         <Footer />
       </body>
     </html>

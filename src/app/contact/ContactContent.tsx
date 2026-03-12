@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Container } from '@/components/ui/Container'
+import { useInView } from '@/hooks/useInView'
 
 const CALENDLY_URL =
   process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/YOUR_USERNAME/30min'
@@ -25,6 +26,9 @@ export function ContactContent() {
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState(false)
   const [calendlyLoaded, setCalendlyLoaded] = useState(false)
+
+  const { ref: contentRef, inView: contentInView } = useInView()
+  const { ref: trustRef, inView: trustInView } = useInView()
 
   useEffect(() => {
     const initWidgetOnce = () => {
@@ -143,7 +147,12 @@ export function ContactContent() {
       {/* ─── TWO-COLUMN LAYOUT ─── */}
       <section className="bg-[var(--surface-soft)] py-12 md:py-20">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 max-w-6xl mx-auto">
+          <div
+            ref={contentRef}
+            className={`grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 max-w-6xl mx-auto transition-all duration-700 ease-out ${
+              contentInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
 
             {/* LEFT — Calendly */}
             <div className="bg-white p-6 md:p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] transition-all duration-200 relative overflow-hidden">
@@ -190,7 +199,10 @@ export function ContactContent() {
             </div>
 
             {/* RIGHT — Contact Form */}
-            <div className="bg-white p-6 md:p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] transition-all duration-200 relative overflow-hidden">
+            <div 
+              className="bg-white p-6 md:p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] transition-all duration-200 relative overflow-hidden"
+              style={{ transitionDelay: '100ms' }}
+            >
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
               <h2
                 className="text-2xl text-[var(--navy-950)] mb-2"
@@ -306,7 +318,12 @@ export function ContactContent() {
       {/* ─── TRUST STRIP ─── */}
       <section className="bg-white border-t border-[var(--border)] py-8 md:py-10">
         <Container>
-          <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-6 md:gap-12 text-center">
+          <div
+            ref={trustRef}
+            className={`flex flex-col md:flex-row md:items-center md:justify-center gap-6 md:gap-12 text-center transition-all duration-700 ease-out ${
+              trustInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             {[
               { icon: '⚡', label: 'Reply within 24 hours' },
               { icon: '🔒', label: 'No commitment required' },
