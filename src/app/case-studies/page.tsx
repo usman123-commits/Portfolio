@@ -57,24 +57,20 @@ const caseStudies: CaseStudy[] = [
     href: "/case-studies/rededge",
   },
   {
-    id: "automated-job-completion",
-    tagline: "Workflow Automation",
-    badgeColor: "amber" as const,
-    status: "Completed",
-    title: "Automated Job Completion Workflow",
-    industryTag: "Field Service Operations",
-    problem:
-      "Technicians completed jobs on paper. Office staff manually re-entered data into three separate systems — CRM, invoicing, and client notifications — consuming 15+ hours per week.",
-    solution:
-      "Built an n8n workflow triggered by mobile job form submission. It automatically updates the CRM, generates a PDF job report, and sends a client completion email — all within seconds of the technician submitting the form.",
-    outcome: "15 hrs/week saved — zero manual data re-entry",
-    tags: [
-      "n8n",
-      "Webhook",
-      "CRM Integration",
-      "PDF Generation",
-      "Email Automation",
+    id: "rededge",
+    tagline: "Field Service App",
+    badgeColor: "blue" as const,
+    status: "Live · Real Client",
+    title: "RedEdge — Installation Management App",
+    industryTag: "Field Service / Installation Companies",
+    description: "A production-grade offline-first mobile app that replaces paper checklists with a structured digital workflow. Installers complete jobs, capture GPS-tagged photos, collect digital signatures, and generate PDF reports — even without internet.",
+    highlights: [
+      "Offline-first with automatic background sync",
+      "Digital client sign-off + auto-generated PDF report",
+      "Multi-installer teams with role-based access",
     ],
+    tags: ["React Native", "Node.js", "MongoDB", "Expo", "Offline-First"],
+    href: "/case-studies/rededge",
   },
 ];
 
@@ -119,7 +115,7 @@ export default function CaseStudiesPage() {
                     className={
                       study.badgeColor === "amber"
                         ? "text-sm font-semibold text-amber-700 uppercase tracking-wide bg-amber-100 inline-flex px-2 py-0.5 rounded"
-                        : "text-sm font-semibold text-blue-600 uppercase tracking-wide"
+                        : "text-sm font-semibold text-blue-700 uppercase tracking-wide bg-blue-100 inline-flex px-2 py-0.5 rounded"
                     }
                   >
                     {study.tagline}
@@ -181,7 +177,7 @@ export default function CaseStudiesPage() {
                   <span className="text-sm text-gray-500">Interested in something similar?</span>
                   <div className="flex gap-4 items-center w-full sm:w-auto mt-4 sm:mt-0">
                      {study.href && (
-                      <Button href={study.href} variant="secondary">
+                      <Button href={study.href} variant="secondary" className="border-blue-600 text-blue-600 hover:bg-blue-50">
                         View Full Case Study →
                       </Button>
                     )}
