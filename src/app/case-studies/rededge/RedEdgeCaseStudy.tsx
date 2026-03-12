@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { useInView } from '@/hooks/useInView'
+import { useParallax } from '@/hooks/useParallax'
 
 export default function RedEdgeCaseStudy() {
   const { ref: problemRef, inView: problemInView } = useInView()
@@ -11,6 +12,8 @@ export default function RedEdgeCaseStudy() {
   const { ref: featuresRef, inView: featuresInView } = useInView()
   const { ref: stackRef, inView: stackInView } = useInView()
   const { ref: ctaRef, inView: ctaInView } = useInView()
+
+  const { ref: screenshotRef, offset: screenshotOffset } = useParallax(0.08)
 
   return (
     <main className="min-h-screen">
@@ -188,10 +191,11 @@ export default function RedEdgeCaseStudy() {
             </div>
 
             <div
-              ref={screenshotsRef}
-              className={`grid grid-cols-1 sm:grid-cols-2 gap-6 transition-all duration-700 ease-out ${
+              ref={screenshotRef}
+              className={`grid grid-cols-1 sm:grid-cols-2 gap-6 transition-all duration-700 ease-out parallax-element ${
                 screenshotsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
+              style={{ transform: `translateY(${screenshotOffset}px)` }}
             >
               {[
                 { src: '/case-studies/rededge/dashboard.jpeg', label: 'Installer Dashboard' },

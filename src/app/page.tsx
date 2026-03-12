@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 import { useInView } from "@/hooks/useInView";
+import { useParallax } from "@/hooks/useParallax";
 
 export default function HomePage() {
   // Each section gets its own scroll observer
@@ -13,13 +14,19 @@ export default function HomePage() {
   const { ref: servicesRef, inView: servicesInView } = useInView()
   const { ref: ctaRef, inView: ctaInView } = useInView()
 
+  const { ref: gridRef, offset: gridOffset } = useParallax(0.05)
+
   return (
     <main className="min-h-screen">
       {/* ─────────────────── HERO ─────────────────── */}
       <section className="relative bg-white overflow-hidden min-h-[90vh] flex items-center">
         {/* Grid pattern + radial fade */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 hero-grid-bg opacity-50" />
+          <div 
+            ref={gridRef}
+            className="absolute inset-0 hero-grid-bg opacity-50 parallax-element" 
+            style={{ transform: `translateY(${gridOffset}px)` }}
+          />
           <div
             className="absolute inset-0"
             style={{ background: "radial-gradient(ellipse at center, transparent 30%, white 90%)" }}

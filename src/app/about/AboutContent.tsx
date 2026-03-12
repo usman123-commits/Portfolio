@@ -3,6 +3,7 @@
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 import { useInView } from "@/hooks/useInView";
+import { useParallax } from "@/hooks/useParallax";
 
 export function AboutContent() {
   const { ref: focusRef, inView: focusInView } = useInView()
@@ -10,12 +11,18 @@ export function AboutContent() {
   const { ref: processRef, inView: processInView } = useInView()
   const { ref: ctaRef, inView: ctaInView } = useInView()
 
+  const { ref: aboutBgRef, offset: aboutBgOffset } = useParallax(0.06)
+
   return (
     <main className="min-h-screen">
 
       {/* ─── HERO ─── */}
       <section className="relative bg-white overflow-hidden min-h-[50vh] flex items-center">
-        <div className="absolute inset-0 z-0">
+        <div 
+          ref={aboutBgRef}
+          className="absolute inset-0 z-0 parallax-element"
+          style={{ transform: `translateY(${aboutBgOffset}px)` }}
+        >
           <div className="absolute inset-0 hero-grid-bg opacity-40" />
           <div
             className="absolute inset-0"

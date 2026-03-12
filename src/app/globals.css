@@ -96,3 +96,9 @@ h3, h4, h5, h6 {
   background-size: 48px 48px;
   background-position: center center;
 }
+
+.parallax-element {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
