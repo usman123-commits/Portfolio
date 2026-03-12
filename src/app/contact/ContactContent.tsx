@@ -18,6 +18,7 @@ const FORM_ENDPOINT = FORMSPREE_FORM_ID
 export function ContactContent() {
   const [formData, setFormData] = useState({
     fullName: '',
+    email: '',
     company: '',
     serviceNeeded: '',
     message: '',
@@ -87,14 +88,18 @@ export function ContactContent() {
 
   const allFilled =
     formData.fullName.trim() !== '' &&
+    formData.email.trim() !== '' &&
     formData.company.trim() !== '' &&
     formData.serviceNeeded !== '' &&
     formData.message.trim() !== ''
 
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setTouched({ fullName: true, company: true, serviceNeeded: true, message: true })
+    setTouched({ fullName: true, email: true, company: true, serviceNeeded: true, message: true })
     if (!allFilled) return
+    if (!emailValid) return
     setSubmitError(false)
     try {
       const res = await fetch(FORM_ENDPOINT, {
@@ -240,6 +245,23 @@ export function ContactContent() {
                     />
                     {touched.fullName && !formData.fullName.trim() && (
                       <p className="text-red-500 text-sm mt-1">Required</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className={labelBase}>
+                      Email Address <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="email" name="email" type="email" required
+                      value={formData.email} onChange={handleChange} onBlur={handleBlur}
+                      placeholder="you@company.com" className={inputBase}
+                    />
+                    {touched.email && !formData.email.trim() && (
+                      <p className="text-red-500 text-sm mt-1">Required</p>
+                    )}
+                    {touched.email && formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && (
+                      <p className="text-red-500 text-sm mt-1">Invalid email address</p>
                     )}
                   </div>
 
