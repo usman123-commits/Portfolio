@@ -1,69 +1,19 @@
-import { Button } from "@/components/ui/Button";
+'use client'
+
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
+import { useInView } from "@/hooks/useInView";
 
-interface CaseStudy {
-  id: string;
-  tagline: string;
-  badgeColor: "blue" | "amber";
-  status?: string;
-  title: string;
-  industryTag?: string;
-  problem?: string;
-  solution?: string;
-  outcome?: string;
-  description?: string;
-  highlights?: string[];
-  tags?: string[];
-  href?: string;
-}
-
-export const metadata = {
-  title: "Case Studies",
-  description:
-    "Real-world examples of field service apps and workflow systems built for data integrity and reliable operations.",
-  alternates: { canonical: `${siteConfig.url}/case-studies` },
-};
-
-const caseStudies: CaseStudy[] = [
-  {
-    id: "rental-property-operations",
-    tagline: "Workflow Automation",
-    badgeColor: "amber" as const,
-    status: "In Development",
-    title: "Rental Property Operations — End-to-End Automation",
-    industryTag: "Short-Term Rental / Property Management",
-    problem:
-      "Every booking triggered a chain of manual work — checking cleaner availability, sending notifications, logging jobs, tracking clock-ins. Missed cleans, late arrivals, and extended checkouts were all handled reactively with no central system of record.",
-    solution:
-      "Built a multi-workflow n8n automation system integrated with Hostfully. When a booking arrives, it's automatically logged, a cleaner is assigned based on availability and property, Google Calendar events are created for both admin and cleaner, and a notification email is sent — all without anyone touching a spreadsheet. Extended checkouts trigger automatic schedule updates. Cleaner clock-ins via Google Form validate GPS proximity to the property and update job status in real time.",
-    outcome:
-      "Fully automated booking-to-clean pipeline — zero manual scheduling",
-    highlights: [
-      "Booking ingestion from Hostfully → Google Sheets",
-      "Cleaner assignment + Google Calendar sync",
-      "GPS-validated clock-in via Google Forms",
-      "Extended checkout detection + auto-reschedule",
-    ],
-    tags: [
-      "n8n",
-      "Hostfully",
-      "Google Sheets",
-      "Google Calendar",
-      "Gmail",
-      "GPS Validation",
-      "Workflow Automation",
-    ],
-    href: "/case-studies/rededge",
-  },
+const caseStudies = [
   {
     id: "rededge",
     tagline: "Field Service App",
-    badgeColor: "blue" as const,
+    badgeStyle: "bg-[var(--navy-100)] text-[var(--navy-700)]",
     status: "Live · Real Client",
     title: "RedEdge — Installation Management App",
-    industryTag: "Field Service / Installation Companies",
-    description: "A production-grade offline-first mobile app that replaces paper checklists with a structured digital workflow. Installers complete jobs, capture GPS-tagged photos, collect digital signatures, and generate PDF reports — even without internet.",
+    industry: "Field Service / Installation Companies",
+    description:
+      "A production-grade offline-first mobile app that replaces paper checklists with a structured digital workflow. Installers complete jobs, capture GPS-tagged photos, collect digital signatures, and generate PDF reports — even without internet.",
     highlights: [
       "Offline-first with automatic background sync",
       "Digital client sign-off + auto-generated PDF report",
@@ -72,118 +22,178 @@ const caseStudies: CaseStudy[] = [
     tags: ["React Native", "Node.js", "MongoDB", "Expo", "Offline-First"],
     href: "/case-studies/rededge",
   },
+  {
+    id: "rental-property-operations",
+    tagline: "Workflow Automation",
+    badgeStyle: "bg-amber-100 text-amber-700",
+    status: "In Development",
+    title: "Rental Property Operations — End-to-End Automation",
+    industry: "Short-Term Rental / Property Management",
+    description:
+      "Every booking triggered a chain of manual work — checking cleaner availability, sending notifications, logging jobs, tracking clock-ins. Built a multi-workflow n8n system to automate the entire booking-to-clean pipeline, GPS-validated cleaner clock-ins, and extended checkout detection.",
+    highlights: [
+      "Booking ingestion from Hostfully → Google Sheets",
+      "Cleaner assignment + Google Calendar sync",
+      "GPS-validated clock-in via Google Forms",
+      "Extended checkout detection + auto-reschedule",
+    ],
+    tags: ["n8n", "Hostfully", "Google Sheets", "Google Calendar", "Gmail", "GPS Validation"],
+    href: "/case-studies",
+  },
 ];
 
 export default function CaseStudiesPage() {
+  const { ref: cardsRef, inView: cardsInView } = useInView()
+  const { ref: ctaRef, inView: ctaInView } = useInView()
+
   return (
     <main className="min-h-screen">
-      {/* Page Intro */}
-      <section className="bg-white py-20 lg:py-32">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
-              CASE STUDIES
+
+      {/* ─── HERO ─── */}
+      <section className="relative bg-white overflow-hidden min-h-[50vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 hero-grid-bg opacity-40" />
+          <div
+            className="absolute inset-0"
+            style={{ background: "radial-gradient(ellipse at center, transparent 30%, white 90%)" }}
+          />
+        </div>
+        <Container className="relative z-10 py-20">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-6">
+              OUR WORK
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+            <h1
+              className="text-5xl md:text-6xl lg:text-7xl text-[var(--navy-950)] leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+            >
               Case Studies
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-              Real-world examples of workflow systems and field service
-              applications built for reliable operations.
+            <p className="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-8">
+              Real-world examples of field service apps and workflow systems
+              built for reliable operations.
             </p>
-            <p className="mt-4 text-sm font-medium text-gray-700">
-              Showing work across both service areas:
-            </p>
-            <div className="mt-3 flex flex-wrap justify-center gap-2">
-              <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-sm text-gray-700">
-                🏗️ Field Service Apps
+            {/* Category pills */}
+            <div className="flex flex-wrap justify-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-1.5 text-sm text-[var(--text-secondary)]">
+                <span className="text-base">🏗️</span> Field Service Apps
               </span>
-              <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-sm text-gray-700">
-                ⚡ n8n Automation
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-1.5 text-sm text-[var(--text-secondary)]">
+                <span className="text-base">⚡</span> n8n Automation
               </span>
             </div>
           </div>
+        </Container>
+      </section>
 
-          <div className="space-y-8 max-w-4xl mx-auto">
-            {caseStudies.map((study) => (
+      {/* ─── CASE STUDY CARDS ─── */}
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
+        <Container>
+          <div className="text-center mb-14">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
+              PROJECTS
+            </p>
+            <h2
+              className="text-3xl md:text-5xl text-[var(--navy-950)]"
+              style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+            >
+              What we&apos;ve built
+            </h2>
+          </div>
+
+          <div
+            ref={cardsRef}
+            className={`space-y-6 max-w-4xl mx-auto transition-all duration-700 ease-out ${
+              cardsInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            {caseStudies.map((study, index) => (
               <article
                 key={study.id}
-                className="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200 flex flex-col"
+                className="bg-white rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200 relative overflow-hidden flex flex-col"
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <p
-                    className={
-                      study.badgeColor === "amber"
-                        ? "text-sm font-semibold text-amber-700 uppercase tracking-wide bg-amber-100 inline-flex px-2 py-0.5 rounded"
-                        : "text-sm font-semibold text-blue-700 uppercase tracking-wide bg-blue-100 inline-flex px-2 py-0.5 rounded"
-                    }
-                  >
-                    {study.tagline}
-                  </p>
-                  {"status" in study && study.status && (
-                    <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
-                      {study.status}
+                {/* Top accent stripe */}
+                <div className="h-[3px] bg-[var(--navy-500)] w-full flex-shrink-0" />
+
+                <div className="p-8 flex flex-col flex-1">
+                  {/* Badges */}
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase ${study.badgeStyle}`}>
+                      {study.tagline}
                     </span>
-                  )}
-                </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  {study.title}
-                </h2>
-                {"industryTag" in study && study.industryTag && (
-                  <p className="text-sm text-gray-500 mb-4">{study.industryTag}</p>
-                )}
-                {"description" in study && study.description && (
-                  <p className="text-gray-600 mb-6">{study.description}</p>
-                )}
-                {"problem" in study && study.problem && (
-                  <div className="space-y-4 mb-6">
-                    <p className="text-gray-600">
-                      <span className="font-medium text-gray-900">Problem: </span>
-                      {study.problem}
-                    </p>
-                    <p className="text-gray-600">
-                      <span className="font-medium text-gray-900">Solution: </span>
-                      {study.solution}
-                    </p>
-                    <p className="text-gray-600">
-                      <span className="font-medium text-gray-900">Outcome: </span>
-                      {study.outcome}
-                    </p>
-                  </div>
-                )}
-                {"highlights" in study && study.highlights && (
-                  <ul className="space-y-2 text-sm text-gray-700 mb-8">
-                    {study.highlights.map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <span className="text-blue-600">•</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {"tags" in study && study.tags && study.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {study.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-md border border-gray-200 bg-gray-50 px-2 py-1 text-xs text-gray-600"
-                      >
-                        {tag}
+                    {study.status && (
+                      <span className="inline-flex px-3 py-1 rounded-full text-xs font-medium bg-[var(--surface-soft)] text-[var(--text-secondary)] border border-[var(--border)]">
+                        {study.status}
                       </span>
-                    ))}
-                  </div>
-                )}
-                <div className="mt-auto pt-6 border-t border-gray-100 flex flex-wrap gap-4 items-center justify-between">
-                  <span className="text-sm text-gray-500">Interested in something similar?</span>
-                  <div className="flex gap-4 items-center w-full sm:w-auto mt-4 sm:mt-0">
-                     {study.href && (
-                      <Button href={study.href} variant="secondary" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                        View Full Case Study →
-                      </Button>
                     )}
-                    <Button href={siteConfig.links.contact} variant="primary">
-                      Discuss Your Project
-                    </Button>
+                  </div>
+
+                  {/* Title */}
+                  <h2
+                    className="text-2xl md:text-3xl text-[var(--navy-950)] mb-2"
+                    style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+                  >
+                    {study.title}
+                  </h2>
+
+                  {/* Industry */}
+                  <p className="text-sm text-[var(--text-secondary)] mb-5">
+                    {study.industry}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
+                    {study.description}
+                  </p>
+
+                  {/* Highlights */}
+                  {study.highlights && (
+                    <ul className="space-y-2.5 text-sm text-[var(--text-secondary)] mb-6">
+                      {study.highlights.map((item) => (
+                        <li key={item} className="flex items-center gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--navy-400)] flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Tech tags */}
+                  {study.tags && (
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {study.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-3 py-1 text-xs text-[var(--text-secondary)]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Footer CTA row */}
+                  <div className="mt-auto pt-6 border-t border-[var(--border)] flex flex-wrap gap-4 items-center justify-between">
+                    <span className="text-sm text-[var(--text-secondary)]">
+                      Interested in something similar?
+                    </span>
+                    <div className="flex flex-wrap gap-3 items-center">
+                      {study.href && (
+                        <a
+                          href={study.href}
+                          className="inline-flex items-center justify-center border border-[var(--navy-500)] text-[var(--navy-500)] rounded-full px-5 py-2.5 text-sm font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
+                        >
+                          View Case Study →
+                        </a>
+                      )}
+                      <a
+                        href={siteConfig.links.contact}
+                        className="inline-flex items-center justify-center bg-[var(--navy-950)] text-white rounded-full px-5 py-2.5 text-sm font-medium hover:bg-[var(--navy-800)] transition-colors duration-200"
+                      >
+                        Discuss Your Project
+                      </a>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -192,20 +202,31 @@ export default function CaseStudiesPage() {
         </Container>
       </section>
 
-      {/* CTA for more to come / get in touch */}
-      <section className="bg-gray-50 py-20">
+      {/* ─── CTA ─── */}
+      <section className="bg-[var(--navy-950)] py-24">
         <Container>
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div
+            ref={ctaRef}
+            className={`text-center max-w-2xl mx-auto transition-all duration-700 ease-out ${
+              ctaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <h2
+              className="text-5xl lg:text-6xl text-white text-center mb-4 font-normal"
+              style={{ fontFamily: "var(--font-instrument-serif), serif", color: "#ffffff" }}
+            >
               Have a similar project?
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Let&apos;s discuss your workflow and how we can build something that
-              fits your team.
+            <p className="text-lg md:text-xl text-white/70 mb-10">
+              Let&apos;s discuss your workflow and find the right approach for
+              your team.
             </p>
-            <Button href={siteConfig.links.contact} variant="primary">
+            <a
+              href={siteConfig.links.contact}
+              className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
+            >
               Discuss Your Project
-            </Button>
+            </a>
           </div>
         </Container>
       </section>
