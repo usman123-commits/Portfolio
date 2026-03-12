@@ -45,10 +45,10 @@ export function Navbar() {
           <div className="flex justify-start min-w-0">
             <Link
               href="/"
-              className="text-xl text-[var(--navy-950)] hover:text-[var(--navy-700)] transition-colors flex items-center gap-2"
+              className="text-lg md:text-xl text-[var(--navy-950)] hover:text-[var(--navy-700)] transition-colors flex items-center gap-2 whitespace-nowrap"
               style={{ fontFamily: "var(--font-instrument-serif), serif" }}
             >
-              <span className="text-[10px] pb-1">■</span>
+              <span className="text-[10px] pb-1 hidden sm:inline">■</span>
               {siteConfig.name}
             </Link>
           </div>

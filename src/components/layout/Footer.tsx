@@ -9,7 +9,7 @@ export function Footer() {
     <footer className="bg-[var(--navy-950)] text-white">
       <Container>
         <div className="py-16 md:py-24">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Col 1: Brand & Tagline */}
             <div className="space-y-4">
               <div
