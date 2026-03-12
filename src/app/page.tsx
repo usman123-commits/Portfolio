@@ -3,18 +3,43 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
+
 import { useInView } from "@/hooks/useInView";
-import { useParallax } from "@/hooks/useParallax";
 
 export default function HomePage() {
-  // Each section gets its own scroll observer
-  const { ref: whoRef, inView: whoInView } = useInView()
-  const { ref: problemRef, inView: problemInView } = useInView()
-  const { ref: solutionRef, inView: solutionInView } = useInView()
-  const { ref: servicesRef, inView: servicesInView } = useInView()
-  const { ref: ctaRef, inView: ctaInView } = useInView()
+  // Who this is for
+  const { ref: whoHeadRef, animationStyle: whoHeadStyle } = useInView(0.15, 'left')
+  const { ref: who1Ref, animationStyle: who1Style } = useInView(0.15, 'up')
+  const { ref: who2Ref, animationStyle: who2Style } = useInView(0.15, 'up')
+  const { ref: who3Ref, animationStyle: who3Style } = useInView(0.15, 'up')
+  const { ref: who4Ref, animationStyle: who4Style } = useInView(0.15, 'up')
+  const whoRefs = [who1Ref, who2Ref, who3Ref, who4Ref]
+  const whoStyles = [who1Style, who2Style, who3Style, who4Style]
 
-  const { ref: gridRef, style: gridStyle } = useParallax(0.05)
+  // The Problem
+  const { ref: probHeadRef, animationStyle: probHeadStyle } = useInView(0.15, 'up')
+  const { ref: prob1Ref, animationStyle: prob1Style } = useInView(0.15, 'left')
+  const { ref: prob2Ref, animationStyle: prob2Style } = useInView(0.15, 'right')
+  const probRefs = [prob1Ref, prob2Ref]
+  const probStyles = [prob1Style, prob2Style]
+
+  // The Solution
+  const { ref: solHeadRef, animationStyle: solHeadStyle } = useInView(0.15, 'up')
+  const { ref: sol1Ref, animationStyle: sol1Style } = useInView(0.15, 'left')
+  const { ref: sol2Ref, animationStyle: sol2Style } = useInView(0.15, 'up')
+  const { ref: sol3Ref, animationStyle: sol3Style } = useInView(0.15, 'right')
+  const { ref: sol4Ref, animationStyle: sol4Style } = useInView(0.15, 'up')
+  const solRefs = [sol1Ref, sol2Ref, sol3Ref, sol4Ref]
+  const solStyles = [sol1Style, sol2Style, sol3Style, sol4Style]
+  const solDelays = [0, 100, 0, 200] // per user instructions
+
+  // Services Strip
+  const { ref: svc1Ref, animationStyle: svc1Style } = useInView(0.15, 'left')
+  const { ref: svc2Ref, animationStyle: svc2Style } = useInView(0.15, 'right')
+
+  // Final CTA
+  const { ref: ctaHeadRef, animationStyle: ctaHeadStyle } = useInView(0.15, 'up')
+  const { ref: ctaBtnRef, animationStyle: ctaBtnStyle } = useInView(0.15, 'up')
 
   return (
     <main className="min-h-screen">
@@ -22,11 +47,7 @@ export default function HomePage() {
       <section className="relative bg-white overflow-hidden min-h-[90vh] flex items-center">
         {/* Grid pattern + radial fade */}
         <div className="absolute inset-0 z-0">
-          <div 
-            ref={gridRef}
-            className="absolute inset-0 hero-grid-bg opacity-50 parallax-element" 
-            style={gridStyle}
-          />
+          <div className="absolute inset-0 hero-grid-bg opacity-50" />
           <div
             className="absolute inset-0"
             style={{ background: "radial-gradient(ellipse at center, transparent 30%, white 90%)" }}
@@ -92,7 +113,7 @@ export default function HomePage() {
       {/* ─────────────────── WHO THIS IS FOR ─────────────────── */}
       <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-16">
+          <div ref={whoHeadRef} style={whoHeadStyle} className="text-center mb-16">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
               WHO THIS IS FOR
             </p>
@@ -104,13 +125,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          {/* Animated wrapper */}
-          <div
-            ref={whoRef}
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-700 ease-out ${
-              whoInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 title: "Installation Teams",
@@ -152,8 +167,9 @@ export default function HomePage() {
             ].map((item, index) => (
               <div
                 key={index}
-                className={`bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                ref={whoRefs[index]}
+                className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+                style={{ ...whoStyles[index], transitionDelay: `${index * 100}ms` }}
               >
                 <div className="w-12 h-12 bg-[var(--navy-50)] rounded-xl flex items-center justify-center mb-6">
                   {item.icon}
@@ -169,7 +185,7 @@ export default function HomePage() {
       {/* ─────────────────── THE PROBLEM ─────────────────── */}
       <section className="bg-[var(--navy-950)] text-white py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-12">
+          <div ref={probHeadRef} style={probHeadStyle} className="text-center mb-12">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-400)] uppercase tracking-[0.12em] mb-4">
               THE PROBLEM
             </p>
@@ -184,12 +200,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div
-            ref={problemRef}
-            className={`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto transition-all duration-700 ease-out ${
-              problemInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
               {
                 title: "Paper-based workflows",
@@ -204,8 +215,9 @@ export default function HomePage() {
             ].map((item, index) => (
               <div
                 key={index}
-                className={`bg-[var(--navy-800)] p-8 rounded-2xl border border-[var(--navy-700)] border-l-2 border-l-[var(--navy-400)]`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                ref={probRefs[index]}
+                className="bg-[var(--navy-800)] p-8 rounded-2xl border border-[var(--navy-700)] border-l-2 border-l-[var(--navy-400)]"
+                style={probStyles[index]}
               >
                 <div className="bg-[var(--navy-500)]/20 rounded-full p-3 w-fit mb-4">
                   <span className="text-2xl">{item.icon}</span>
@@ -226,7 +238,7 @@ export default function HomePage() {
       {/* ─────────────────── THE SOLUTION ─────────────────── */}
       <section className="bg-white py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-16">
+          <div ref={solHeadRef} style={solHeadStyle} className="text-center mb-16">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
               THE SOLUTION
             </p>
@@ -238,12 +250,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div
-            ref={solutionRef}
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-700 ease-out ${
-              solutionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 title: "Offline-first design",
@@ -268,8 +275,9 @@ export default function HomePage() {
             ].map((item, index) => (
               <div
                 key={index}
+                ref={solRefs[index]}
                 className="bg-[var(--surface-soft)] p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
-                style={{ transitionDelay: `${index * 100}ms` }}
+                style={{ ...solStyles[index], transitionDelay: `${solDelays[index]}ms` }}
               >
                 <div className="text-3xl mb-5">{item.icon}</div>
                 <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
@@ -283,14 +291,9 @@ export default function HomePage() {
       {/* ─────────────────── SERVICES STRIP ─────────────────── */}
       <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div
-            ref={servicesRef}
-            className={`grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 transition-all duration-700 ease-out ${
-              servicesInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             {/* Card 1 */}
-            <div className="bg-white p-6 md:p-8 lg:p-12 rounded-2xl border border-[var(--border)] relative overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
+            <div ref={svc1Ref} style={svc1Style} className="bg-white p-6 md:p-8 lg:p-12 rounded-2xl border border-[var(--border)] relative overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
               <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-5">
                 SERVICE 01
@@ -309,8 +312,9 @@ export default function HomePage() {
 
             {/* Card 2 */}
             <div
+              ref={svc2Ref}
               className="bg-white p-6 md:p-8 lg:p-12 rounded-2xl border border-[var(--border)] relative overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
-              style={{ transitionDelay: "100ms" }}
+              style={svc2Style}
             >
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
               <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-5">
@@ -334,27 +338,25 @@ export default function HomePage() {
       {/* ─────────────────── FINAL CTA ─────────────────── */}
       <section className="bg-[var(--navy-950)] py-24">
         <Container>
-          <div
-            ref={ctaRef}
-            className={`text-center max-w-2xl mx-auto transition-all duration-700 ease-out ${
-              ctaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="text-center max-w-2xl mx-auto">
             <h2
+              ref={ctaHeadRef}
               className="text-5xl lg:text-6xl text-white text-center mb-4 font-normal"
-              style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+              style={{ fontFamily: "var(--font-instrument-serif), serif", ...ctaHeadStyle }}
             >
               Ready to build something?
             </h2>
             <p className="text-lg md:text-xl text-white/70 mb-10">
               Tell me about your project.
             </p>
-            <a
-              href={siteConfig.links.contact}
-              className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
-            >
-              Start a Conversation
-            </a>
+            <div ref={ctaBtnRef} style={{ ...ctaBtnStyle, transitionDelay: "150ms" }}>
+              <a
+                href={siteConfig.links.contact}
+                className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
+              >
+                Start a Conversation
+              </a>
+            </div>
           </div>
         </Container>
       </section>

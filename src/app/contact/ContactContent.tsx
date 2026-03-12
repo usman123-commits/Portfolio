@@ -28,8 +28,15 @@ export function ContactContent() {
   const [submitError, setSubmitError] = useState(false)
   const [calendlyLoaded, setCalendlyLoaded] = useState(false)
 
-  const { ref: contentRef, inView: contentInView } = useInView()
-  const { ref: trustRef, inView: trustInView } = useInView()
+  const { ref: headRef, animationStyle: headStyle } = useInView(0.15, 'up')
+  const { ref: leftRef, animationStyle: leftStyle } = useInView(0.15, 'left')
+  const { ref: rightRef, animationStyle: rightStyle } = useInView(0.15, 'right')
+  
+  const { ref: trust1Ref, animationStyle: trust1Style } = useInView(0.15, 'up')
+  const { ref: trust2Ref, animationStyle: trust2Style } = useInView(0.15, 'up')
+  const { ref: trust3Ref, animationStyle: trust3Style } = useInView(0.15, 'up')
+  const trustRefs = [trust1Ref, trust2Ref, trust3Ref]
+  const trustStyles = [trust1Style, trust2Style, trust3Style]
 
   useEffect(() => {
     const initWidgetOnce = () => {
@@ -131,7 +138,7 @@ export function ContactContent() {
           />
         </div>
         <Container className="relative z-10 py-16 md:py-20">
-          <div className="max-w-3xl mx-auto text-center">
+          <div ref={headRef} style={headStyle} className="max-w-3xl mx-auto text-center">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-6">
               GET IN TOUCH
             </p>
@@ -152,15 +159,10 @@ export function ContactContent() {
       {/* ─── TWO-COLUMN LAYOUT ─── */}
       <section className="bg-[var(--surface-soft)] py-12 md:py-20">
         <Container>
-          <div
-            ref={contentRef}
-            className={`grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 max-w-6xl mx-auto transition-all duration-700 ease-out ${
-              contentInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 max-w-6xl mx-auto">
 
             {/* LEFT — Calendly */}
-            <div className="bg-white p-6 md:p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] transition-all duration-200 relative overflow-hidden">
+            <div ref={leftRef} style={leftStyle} className="bg-white p-6 md:p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] transition-all duration-200 relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
               <h2
                 className="text-2xl text-[var(--navy-950)] mb-2"
@@ -205,8 +207,8 @@ export function ContactContent() {
 
             {/* RIGHT — Contact Form */}
             <div 
+              ref={rightRef} style={rightStyle}
               className="bg-white p-6 md:p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] transition-all duration-200 relative overflow-hidden"
-              style={{ transitionDelay: '100ms' }}
             >
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
               <h2
@@ -340,18 +342,13 @@ export function ContactContent() {
       {/* ─── TRUST STRIP ─── */}
       <section className="bg-white border-t border-[var(--border)] py-8 md:py-10">
         <Container>
-          <div
-            ref={trustRef}
-            className={`flex flex-col md:flex-row md:items-center md:justify-center gap-6 md:gap-12 text-center transition-all duration-700 ease-out ${
-              trustInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-6 md:gap-12 text-center">
             {[
               { icon: '⚡', label: 'Reply within 24 hours' },
               { icon: '🔒', label: 'No commitment required' },
               { icon: '📋', label: 'Free project scoping call' },
-            ].map(({ icon, label }) => (
-              <div key={label} className="flex items-center justify-center gap-3">
+            ].map(({ icon, label }, index) => (
+              <div key={label} ref={trustRefs[index]} style={{ ...trustStyles[index], transitionDelay: `${index * 100}ms` }} className="flex items-center justify-center gap-3">
                 <span className="text-2xl" aria-hidden>{icon}</span>
                 <span className="text-sm font-medium text-[var(--text-secondary)]">{label}</span>
               </div>

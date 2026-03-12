@@ -4,22 +4,55 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { useInView } from '@/hooks/useInView'
-import { useParallax } from '@/hooks/useParallax'
+
 import { useCountUp } from '@/hooks/useCountUp'
 
 export default function RedEdgeCaseStudy() {
-  const { ref: problemRef, inView: problemInView } = useInView()
-  const { ref: screenshotsRef, inView: screenshotsInView } = useInView()
-  const { ref: featuresRef, inView: featuresInView } = useInView()
-  const { ref: stackRef, inView: stackInView } = useInView()
-  const { ref: ctaRef, inView: ctaInView } = useInView()
-  const { ref: metricsRef, inView: metricsInView } = useInView(0.3)
+  // Hero
+  const { ref: heroRef, animationStyle: heroStyle } = useInView(0.15, 'up')
 
+  // Problem / Solution
+  const { ref: probRef, animationStyle: probStyle } = useInView(0.15, 'left')
+  const { ref: solRef, animationStyle: solStyle } = useInView(0.15, 'right')
+  const { ref: problemRef, inView: problemInView } = useInView()
+
+  // Screenshots
+  const { ref: screenshotsHeadRef, animationStyle: screenshotsHeadStyle } = useInView(0.15, 'up')
+  const { ref: shot1Ref, animationStyle: shot1Style } = useInView(0.15, 'up')
+  const { ref: shot2Ref, animationStyle: shot2Style } = useInView(0.15, 'up')
+  const { ref: shot3Ref, animationStyle: shot3Style } = useInView(0.15, 'up')
+  const { ref: shot4Ref, animationStyle: shot4Style } = useInView(0.15, 'up')
+  const { ref: shot5Ref, animationStyle: shot5Style } = useInView(0.15, 'up')
+  const shotRefs = [shot1Ref, shot2Ref, shot3Ref, shot4Ref, shot5Ref]
+  const shotStyles = [shot1Style, shot2Style, shot3Style, shot4Style, shot5Style]
+
+  // Features
+  const { ref: featuresHeadRef, animationStyle: featuresHeadStyle } = useInView(0.15, 'up')
+  const { ref: feat1Ref, animationStyle: feat1Style } = useInView(0.15, 'left')
+  const { ref: feat2Ref, animationStyle: feat2Style } = useInView(0.15, 'right')
+  const { ref: feat3Ref, animationStyle: feat3Style } = useInView(0.15, 'up')
+  const { ref: feat4Ref, animationStyle: feat4Style } = useInView(0.15, 'left')
+  const { ref: feat5Ref, animationStyle: feat5Style } = useInView(0.15, 'right')
+  const { ref: feat6Ref, animationStyle: feat6Style } = useInView(0.15, 'up')
+  const featRefs = [feat1Ref, feat2Ref, feat3Ref, feat4Ref, feat5Ref, feat6Ref]
+  const featStyles = [feat1Style, feat2Style, feat3Style, feat4Style, feat5Style, feat6Style]
+
+  // Tech Stack
+  const { ref: stackHeadRef, animationStyle: stackHeadStyle } = useInView(0.15, 'up')
+  const { ref: stack1Ref, animationStyle: stack1Style } = useInView(0.15, 'up')
+  const { ref: stack2Ref, animationStyle: stack2Style } = useInView(0.15, 'up')
+  const stackRefs = [stack1Ref, stack2Ref]
+  const stackStyles = [stack1Style, stack2Style]
+
+  // CTA
+  const { ref: ctaHeadRef, animationStyle: ctaHeadStyle } = useInView(0.15, 'up')
+  const { ref: ctaBtnRef, animationStyle: ctaBtnStyle } = useInView(0.15, 'up')
+
+  // Metrics hook + counters
+  const { ref: metricsRef, inView: metricsInView } = useInView(0.3)
   const count0 = useCountUp(0, 1500, metricsInView)
   const count2 = useCountUp(2, 1500, metricsInView)
   const count100 = useCountUp(100, 1500, metricsInView)
-
-  const { ref: screenshotRef, style: screenshotStyle } = useParallax(0.08)
 
   return (
     <main className="min-h-screen">
@@ -31,7 +64,7 @@ export default function RedEdgeCaseStudy() {
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, white 90%)' }} />
         </div>
         <Container className="relative z-10 py-20">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto" ref={heroRef} style={heroStyle}>
             <Link
               href="/case-studies"
               className="inline-flex items-center text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--navy-950)] mr-6 mb-8 transition-colors"
@@ -82,14 +115,9 @@ export default function RedEdgeCaseStudy() {
       {/* ─── PROBLEM + SOLUTION ─── */}
       <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div
-            ref={problemRef}
-            className={`max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-700 ease-out ${
-              problemInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Problem */}
-            <div className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden">
+            <div ref={probRef} style={probStyle} className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-red-400" />
               <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
                 THE PROBLEM
@@ -120,7 +148,7 @@ export default function RedEdgeCaseStudy() {
             </div>
 
             {/* Solution */}
-            <div className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden" style={{ transitionDelay: '100ms' }}>
+            <div ref={solRef} style={solStyle} className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
               <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
                 THE SOLUTION
@@ -187,7 +215,7 @@ export default function RedEdgeCaseStudy() {
       <section className="bg-white py-16 lg:py-24">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-14">
+            <div ref={screenshotsHeadRef} style={screenshotsHeadStyle} className="text-center mb-14">
               <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
                 THE APP
               </p>
@@ -202,17 +230,7 @@ export default function RedEdgeCaseStudy() {
               </p>
             </div>
 
-            <div
-              ref={screenshotRef}
-              className="parallax-element"
-              style={screenshotStyle}
-            >
-            <div
-              ref={screenshotsRef}
-              className={`grid grid-cols-1 sm:grid-cols-2 gap-6 transition-all duration-700 ease-out ${
-                screenshotsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
                 { src: '/case-studies/rededge/dashboard.jpeg', label: 'Installer Dashboard' },
                 { src: '/case-studies/rededge/jobs.jpeg', label: 'Jobs List with Status' },
@@ -222,8 +240,9 @@ export default function RedEdgeCaseStudy() {
               ].map((shot, index) => (
                 <div
                   key={index}
+                  ref={shotRefs[index]}
                   className={`flex flex-col items-center ${index === 4 ? 'sm:col-span-2 sm:max-w-sm sm:mx-auto' : ''}`}
-                  style={{ transitionDelay: `${index * 80}ms` }}
+                  style={{ ...shotStyles[index], transitionDelay: `${index * 80}ms` }}
                 >
                   <div className="w-full max-w-[390px] rounded-2xl overflow-hidden border border-[var(--border)] shadow-md mb-4 bg-[var(--surface-soft)] relative aspect-[390/844]">
                     <Image
@@ -238,7 +257,6 @@ export default function RedEdgeCaseStudy() {
                 </div>
               ))}
             </div>
-            </div>{/* end parallax wrapper */}
           </div>
         </Container>
       </section>
@@ -247,7 +265,7 @@ export default function RedEdgeCaseStudy() {
       <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
+            <div ref={featuresHeadRef} style={featuresHeadStyle} className="text-center mb-14">
               <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
                 CAPABILITIES
               </p>
@@ -259,12 +277,7 @@ export default function RedEdgeCaseStudy() {
               </h2>
             </div>
 
-            <div
-              ref={featuresRef}
-              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 ease-out ${
-                featuresInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { icon: '📋', title: 'Offline-First Architecture', body: 'Works without signal. All updates are saved locally and synced automatically with exponential backoff retry when connectivity returns.' },
                 { icon: '📸', title: 'Photo Documentation', body: 'Up to 50 GPS-tagged photos per job, organized into Before, During, After, Close-up, and Overall categories. Up to 5 photos per checklist item.' },
@@ -275,8 +288,9 @@ export default function RedEdgeCaseStudy() {
               ].map((feature, i) => (
                 <div
                   key={i}
+                  ref={featRefs[i]}
                   className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden"
-                  style={{ transitionDelay: `${i * 60}ms` }}
+                  style={{ ...featStyles[i], transitionDelay: `${i * 60}ms` }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
                   <div className="text-3xl mb-5">{feature.icon}</div>
@@ -293,7 +307,7 @@ export default function RedEdgeCaseStudy() {
       <section className="bg-white py-16 lg:py-24">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-14">
+            <div ref={stackHeadRef} style={stackHeadStyle} className="text-center mb-14">
               <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
                 TECHNOLOGY
               </p>
@@ -305,12 +319,7 @@ export default function RedEdgeCaseStudy() {
               </h2>
             </div>
 
-            <div
-              ref={stackRef}
-              className={`grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-700 ease-out ${
-                stackInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
                   icon: '📱',
@@ -322,9 +331,11 @@ export default function RedEdgeCaseStudy() {
                   label: 'Backend API',
                   techs: ['Node.js', 'Express.js', 'MongoDB', 'JWT Auth', 'Cloudinary', 'Jest', 'Supertest'],
                 },
-              ].map((stack) => (
+              ].map((stack, index) => (
                 <div
                   key={stack.label}
+                  ref={stackRefs[index]}
+                  style={stackStyles[index]}
                   className="bg-[var(--surface-soft)] border border-[var(--border)] rounded-2xl p-8 hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
                 >
                   <h3 className="text-xl font-semibold text-[var(--navy-950)] mb-5 flex items-center gap-2">
@@ -350,15 +361,11 @@ export default function RedEdgeCaseStudy() {
       {/* ─── CTA ─── */}
       <section className="bg-[var(--navy-950)] py-24">
         <Container>
-          <div
-            ref={ctaRef}
-            className={`text-center max-w-2xl mx-auto transition-all duration-700 ease-out ${
-              ctaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
+          <div className="text-center max-w-2xl mx-auto">
             <h2
+              ref={ctaHeadRef}
               className="text-5xl lg:text-6xl text-white text-center mb-4 font-normal"
-              style={{ fontFamily: 'var(--font-instrument-serif), serif', color: '#ffffff' }}
+              style={{ fontFamily: 'var(--font-instrument-serif), serif', color: '#ffffff', ...ctaHeadStyle }}
             >
               Need a field service app?
             </h2>
@@ -366,12 +373,14 @@ export default function RedEdgeCaseStudy() {
               Whether you need offline checklists, digital sign-off, or automated
               reporting — let&apos;s build it for your team.
             </p>
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
-            >
-              Discuss Your Project →
-            </a>
+            <div ref={ctaBtnRef} style={{ ...ctaBtnStyle, transitionDelay: "150ms" }}>
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
+              >
+                Discuss Your Project →
+              </a>
+            </div>
           </div>
         </Container>
       </section>

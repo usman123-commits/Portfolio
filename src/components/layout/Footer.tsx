@@ -1,9 +1,27 @@
+'use client'
+
+import { useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 
+const WHATSAPP_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? ''
+const WHATSAPP_URL = WHATSAPP_PHONE ? `https://wa.me/${WHATSAPP_PHONE}` : '#'
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText("hello@operata.dev");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy email", err);
+    }
+  };
 
   return (
     <footer className="bg-[var(--navy-950)] text-white">
@@ -25,7 +43,7 @@ export function Footer() {
             </div>
 
             {/* Col 2: Navigation Links */}
-            <div className="flex flex-col gap-2 text-sm">
+            <div className="flex flex-col gap-3 text-sm">
               <Link href="/services" className="text-white/70 hover:text-white transition-colors w-fit">
                 Services
               </Link>
@@ -41,12 +59,26 @@ export function Footer() {
             </div>
 
             {/* Col 3: Contact Info */}
-            <div className="flex flex-col gap-2 text-sm">
-              <a href="mailto:hello@operata.dev" className="text-white/70 hover:text-white transition-colors w-fit">
-                hello@operata.dev
-              </a>
-              <a href="#" className="text-white/70 hover:text-white transition-colors w-fit">
-                WhatsApp
+            <div className="flex flex-col gap-3 text-sm">
+              <button
+                onClick={handleCopyEmail}
+                className="text-left text-white/70 hover:text-white transition-colors w-fit group relative"
+                aria-label="Copy email address"
+              >
+                <span className="group-hover:underline decoration-white/30 underline-offset-4">
+                  {copied ? "✓ Copied!" : "hello@operata.dev"}
+                </span>
+              </button>
+              
+              <a 
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-white transition-colors w-fit group"
+              >
+                <span className="group-hover:underline decoration-white/30 underline-offset-4">
+                  WhatsApp ↗
+                </span>
               </a>
             </div>
           </div>

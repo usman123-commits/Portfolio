@@ -3,26 +3,49 @@
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 import { useInView } from "@/hooks/useInView";
-import { useParallax } from "@/hooks/useParallax";
+
 
 export function AboutContent() {
-  const { ref: focusRef, inView: focusInView } = useInView()
-  const { ref: stackRef, inView: stackInView } = useInView()
-  const { ref: processRef, inView: processInView } = useInView()
-  const { ref: ctaRef, inView: ctaInView } = useInView()
+  // Hero
+  const { ref: heroRef, animationStyle: heroStyle } = useInView(0.15, 'up')
 
-  const { ref: aboutBgRef, style: aboutBgStyle } = useParallax(0.06)
+  // Why I focus
+  const { ref: focusHeadRef, animationStyle: focusHeadStyle } = useInView(0.15, 'up')
+  const { ref: focus1Ref, animationStyle: focus1Style } = useInView(0.15, 'left')
+  const { ref: focus2Ref, animationStyle: focus2Style } = useInView(0.15, 'right')
+  const focusRefs = [focus1Ref, focus2Ref]
+  const focusStyles = [focus1Style, focus2Style]
+
+  // Tech stack
+  const { ref: stackHeadRef, animationStyle: stackHeadStyle } = useInView(0.15, 'up')
+  const { ref: stack1Ref, animationStyle: stack1Style } = useInView(0.15, 'up')
+  const { ref: stack2Ref, animationStyle: stack2Style } = useInView(0.15, 'up')
+  const { ref: stack3Ref, animationStyle: stack3Style } = useInView(0.15, 'up')
+  const { ref: stack4Ref, animationStyle: stack4Style } = useInView(0.15, 'up')
+  const { ref: stack5Ref, animationStyle: stack5Style } = useInView(0.15, 'up')
+  const { ref: stack6Ref, animationStyle: stack6Style } = useInView(0.15, 'up')
+  const stackRefs = [stack1Ref, stack2Ref, stack3Ref, stack4Ref, stack5Ref, stack6Ref]
+  const stackStyles = [stack1Style, stack2Style, stack3Style, stack4Style, stack5Style, stack6Style]
+
+  // Process
+  const { ref: processHeadRef, animationStyle: processHeadStyle } = useInView(0.15, 'up')
+  const { ref: process1Ref, animationStyle: process1Style } = useInView(0.15, 'left')
+  const { ref: process2Ref, animationStyle: process2Style } = useInView(0.15, 'up')
+  const { ref: process3Ref, animationStyle: process3Style } = useInView(0.15, 'up')
+  const { ref: process4Ref, animationStyle: process4Style } = useInView(0.15, 'right')
+  const processRefs = [process1Ref, process2Ref, process3Ref, process4Ref]
+  const processStyles = [process1Style, process2Style, process3Style, process4Style]
+
+  // CTA
+  const { ref: ctaHeadRef, animationStyle: ctaHeadStyle } = useInView(0.15, 'up')
+  const { ref: ctaBtnRef, animationStyle: ctaBtnStyle } = useInView(0.15, 'up')
 
   return (
     <main className="min-h-screen">
 
       {/* ─── HERO ─── */}
       <section className="relative bg-white overflow-hidden min-h-[50vh] flex items-center">
-        <div 
-          ref={aboutBgRef}
-          className="absolute inset-0 z-0 parallax-element"
-          style={aboutBgStyle}
-        >
+        <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 hero-grid-bg opacity-40" />
           <div
             className="absolute inset-0"
@@ -31,7 +54,7 @@ export function AboutContent() {
         </div>
         <Container className="relative z-10 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div ref={heroRef} style={heroStyle}>
               <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-6">
                 ABOUT ME
               </p>
@@ -71,7 +94,7 @@ export function AboutContent() {
       {/* ─── WHY I FOCUS ON THIS ─── */}
       <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-14">
+          <div ref={focusHeadRef} style={focusHeadStyle} className="text-center mb-14">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
               MY FOCUS
             </p>
@@ -83,12 +106,7 @@ export function AboutContent() {
             </h2>
           </div>
 
-          <div
-            ref={focusRef}
-            className={`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto transition-all duration-700 ease-out ${
-              focusInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
               {
                 icon: "📱",
@@ -127,7 +145,7 @@ export function AboutContent() {
       {/* ─── TECH STACK ─── */}
       <section className="bg-white py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-14">
+          <div ref={stackHeadRef} style={stackHeadStyle} className="text-center mb-14">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
               TOOLS &amp; TECH
             </p>
@@ -139,12 +157,7 @@ export function AboutContent() {
             </h2>
           </div>
 
-          <div
-            ref={stackRef}
-            className={`grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto transition-all duration-700 ease-out ${
-              stackInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {[
               { icon: "▲", name: "Next.js", role: "Web Applications" },
               { icon: "🔄", name: "n8n", role: "Workflow Automation" },
@@ -155,8 +168,9 @@ export function AboutContent() {
             ].map((item, index) => (
               <div
                 key={item.name}
+                ref={stackRefs[index]}
                 className="rounded-2xl border border-[var(--border)] p-6 bg-[var(--surface-soft)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
-                style={{ transitionDelay: `${index * 60}ms` }}
+                style={{ ...stackStyles[index], transitionDelay: `${index * 60}ms` }}
               >
                 <span className="text-2xl block mb-3">{item.icon}</span>
                 <p className="font-semibold text-[var(--navy-950)]">{item.name}</p>
@@ -170,7 +184,7 @@ export function AboutContent() {
       {/* ─── PROCESS ─── */}
       <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-14">
+          <div ref={processHeadRef} style={processHeadStyle} className="text-center mb-14">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
               PROCESS
             </p>
@@ -182,12 +196,7 @@ export function AboutContent() {
             </h2>
           </div>
 
-          <div
-            ref={processRef}
-            className={`grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto transition-all duration-700 ease-out ${
-              processInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {[
               {
                 step: 1,
@@ -212,8 +221,9 @@ export function AboutContent() {
             ].map((item, index) => (
               <div
                 key={item.step}
+                ref={processRefs[index]}
                 className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden"
-                style={{ transitionDelay: `${index * 100}ms` }}
+                style={processStyles[index]}
               >
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
                 <div className="w-10 h-10 rounded-full bg-[var(--navy-500)] text-white flex items-center justify-center text-sm font-semibold mb-5">
@@ -234,27 +244,25 @@ export function AboutContent() {
       {/* ─── CTA ─── */}
       <section className="bg-[var(--navy-950)] py-24">
         <Container>
-          <div
-            ref={ctaRef}
-            className={`text-center max-w-2xl mx-auto transition-all duration-700 ease-out ${
-              ctaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="text-center max-w-2xl mx-auto">
             <h2
+              ref={ctaHeadRef}
               className="text-5xl lg:text-6xl text-white text-center mb-4 font-normal"
-              style={{ fontFamily: "var(--font-instrument-serif), serif", color: "#ffffff" }}
+              style={{ fontFamily: "var(--font-instrument-serif), serif", ...ctaHeadStyle }}
             >
               Ready to talk?
             </h2>
             <p className="text-lg md:text-xl text-white/70 mb-10">
               Tell me about your project — I&apos;ll reply within 24 hours.
             </p>
-            <a
-              href={siteConfig.links.contact}
-              className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
-            >
-              Start a Conversation →
-            </a>
+            <div ref={ctaBtnRef} style={{ ...ctaBtnStyle, transitionDelay: "150ms" }}>
+              <a
+                href={siteConfig.links.contact}
+                className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
+              >
+                Start a Conversation →
+              </a>
+            </div>
           </div>
         </Container>
       </section>

@@ -42,8 +42,21 @@ const caseStudies = [
 ];
 
 export function CaseStudiesContent() {
-  const { ref: cardsRef, inView: cardsInView } = useInView()
-  const { ref: ctaRef, inView: ctaInView } = useInView()
+  // Hero
+  const { ref: headRef, animationStyle: headStyle } = useInView(0.15, 'up')
+
+  // Projects Header
+  const { ref: projHeadRef, animationStyle: projHeadStyle } = useInView(0.15, 'up')
+
+  // Cards
+  const { ref: card1Ref, animationStyle: card1Style } = useInView(0.15, 'left')
+  const { ref: card2Ref, animationStyle: card2Style } = useInView(0.15, 'right')
+  const cardRefs = [card1Ref, card2Ref]
+  const cardStyles = [card1Style, card2Style]
+
+  // CTA
+  const { ref: ctaHeadRef, animationStyle: ctaHeadStyle } = useInView(0.15, 'up')
+  const { ref: ctaBtnRef, animationStyle: ctaBtnStyle } = useInView(0.15, 'up')
 
   return (
     <main className="min-h-screen">
@@ -58,7 +71,7 @@ export function CaseStudiesContent() {
           />
         </div>
         <Container className="relative z-10 py-20">
-          <div className="max-w-3xl mx-auto text-center">
+          <div ref={headRef} style={headStyle} className="max-w-3xl mx-auto text-center">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-6">
               OUR WORK
             </p>
@@ -87,7 +100,7 @@ export function CaseStudiesContent() {
       {/* ─── CASE STUDY CARDS ─── */}
       <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-14">
+          <div ref={projHeadRef} style={projHeadStyle} className="text-center mb-14">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
               PROJECTS
             </p>
@@ -99,17 +112,13 @@ export function CaseStudiesContent() {
             </h2>
           </div>
 
-          <div
-            ref={cardsRef}
-            className={`space-y-6 max-w-4xl mx-auto transition-all duration-700 ease-out ${
-              cardsInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="space-y-6 max-w-4xl mx-auto">
             {caseStudies.map((study, index) => (
               <article
                 key={study.id}
+                ref={cardRefs[index]}
+                style={cardStyles[index]}
                 className="bg-white rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden flex flex-col"
-                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="h-[3px] bg-[var(--navy-500)] w-full flex-shrink-0" />
 
@@ -188,27 +197,25 @@ export function CaseStudiesContent() {
       {/* ─── CTA ─── */}
       <section className="bg-[var(--navy-950)] py-24">
         <Container>
-          <div
-            ref={ctaRef}
-            className={`text-center max-w-2xl mx-auto transition-all duration-700 ease-out ${
-              ctaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="text-center max-w-2xl mx-auto">
             <h2
+              ref={ctaHeadRef}
               className="text-5xl lg:text-6xl text-white text-center mb-4 font-normal"
-              style={{ fontFamily: "var(--font-instrument-serif), serif", color: "#ffffff" }}
+              style={{ fontFamily: "var(--font-instrument-serif), serif", color: "#ffffff", ...ctaHeadStyle }}
             >
               Have a similar project?
             </h2>
             <p className="text-lg md:text-xl text-white/70 mb-10">
               Let&apos;s discuss your workflow and find the right approach for your team.
             </p>
-            <a
-              href={siteConfig.links.contact}
-              className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
-            >
-              Discuss Your Project
-            </a>
+            <div ref={ctaBtnRef} style={{ ...ctaBtnStyle, transitionDelay: "150ms" }}>
+              <a
+                href={siteConfig.links.contact}
+                className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
+              >
+                Discuss Your Project
+              </a>
+            </div>
           </div>
         </Container>
       </section>
