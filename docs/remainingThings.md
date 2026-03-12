@@ -25,3 +25,13 @@ Connect to Vercel
 Set NEXT_PUBLIC_SITE_URL environment variable
 Deploy
 The project is production-ready and optimized for SEO and Vercel deployment.
+
+
+
+
+
+Before going live:
+
+Add your real NEXT_PUBLIC_ env vars (Formspree ID, Calendly URL) to your hosting platform
+Set your production domain in next.config.ts for OG images
+Submit sitemap.xml to Google Search Console after launch

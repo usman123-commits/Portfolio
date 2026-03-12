@@ -192,10 +192,14 @@ export default function RedEdgeCaseStudy() {
 
             <div
               ref={screenshotRef}
-              className={`grid grid-cols-1 sm:grid-cols-2 gap-6 transition-all duration-700 ease-out parallax-element ${
+              className="parallax-element"
+              style={{ transform: `translateY(${screenshotOffset}px)` }}
+            >
+            <div
+              ref={screenshotsRef}
+              className={`grid grid-cols-1 sm:grid-cols-2 gap-6 transition-all duration-700 ease-out ${
                 screenshotsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
-              style={{ transform: `translateY(${screenshotOffset}px)` }}
             >
               {[
                 { src: '/case-studies/rededge/dashboard.jpeg', label: 'Installer Dashboard' },
@@ -222,6 +226,7 @@ export default function RedEdgeCaseStudy() {
                 </div>
               ))}
             </div>
+            </div>{/* end parallax wrapper */}
           </div>
         </Container>
       </section>
