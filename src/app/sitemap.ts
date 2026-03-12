@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${siteConfig.url}/case-studies/rededge`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
       url: `${siteConfig.url}${siteConfig.links.services}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,

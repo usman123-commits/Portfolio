@@ -15,6 +15,7 @@ interface CaseStudy {
   description?: string;
   highlights?: string[];
   tags?: string[];
+  href?: string;
 }
 
 export const metadata = {
@@ -53,6 +54,7 @@ const caseStudies: CaseStudy[] = [
       "GPS Validation",
       "Workflow Automation",
     ],
+    href: "/case-studies/rededge",
   },
   {
     id: "automated-job-completion",
@@ -110,7 +112,7 @@ export default function CaseStudiesPage() {
             {caseStudies.map((study) => (
               <article
                 key={study.id}
-                className="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200"
+                className="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200 flex flex-col"
               >
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <p
@@ -175,9 +177,19 @@ export default function CaseStudiesPage() {
                     ))}
                   </div>
                 )}
-                <Button href={siteConfig.links.contact} variant="primary">
-                  Discuss Your Project
-                </Button>
+                <div className="mt-auto pt-6 border-t border-gray-100 flex flex-wrap gap-4 items-center justify-between">
+                  <span className="text-sm text-gray-500">Interested in something similar?</span>
+                  <div className="flex gap-4 items-center w-full sm:w-auto mt-4 sm:mt-0">
+                     {study.href && (
+                      <Button href={study.href} variant="secondary">
+                        View Full Case Study →
+                      </Button>
+                    )}
+                    <Button href={siteConfig.links.contact} variant="primary">
+                      Discuss Your Project
+                    </Button>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
