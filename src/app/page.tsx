@@ -4,89 +4,84 @@ import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 
 export const metadata = {
-  title: "Offline-Ready Field Service Apps",
+  title: "Operata | Purpose-built systems for operations teams",
   description:
-    "Structured checklists, photo documentation, and reliable offline usage for field teams. Built for data integrity and clear audit history.",
+    "Operata builds mobile field service apps and n8n workflow automation for operations teams — purpose-built systems that work without internet and run without manual effort.",
 };
 
 export default function HomePage() {
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-white py-20 lg:py-32">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Offline-ready field service apps built around real installation
-                workflows.
-              </h1>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                Structured checklists, photo documentation, and reliable offline
-                usage for field teams. Built for data integrity and clear audit
-                history.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button href={siteConfig.links.caseStudies} variant="primary">
-                  View Case Study
-                </Button>
-                <Button href={siteConfig.links.contact} variant="secondary">
-                  Discuss Your App
-                </Button>
-              </div>
-              <div className="pt-4">
-                <p className="text-sm text-gray-500 mb-3">
-                  Based on a production-tested installation management system
-                  with:
-                </p>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li className="flex items-center gap-2">
-                    <span className="text-blue-600">•</span>
-                    Admin + Installer roles
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-blue-600">•</span>
-                    Structured checklist enforcement
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-blue-600">•</span>
-                    Offline sync with validation
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-blue-600">•</span>
-                    Immutable completion reports
-                  </li>
-                </ul>
-              </div>
+      {/* HOMEPAGE HERO */}
+      <section className="relative bg-white pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
+        {/* Subtle grid pattern background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 hero-grid-bg opacity-50"></div>
+          {/* Radial gradient to fade out grid edges */}
+          <div 
+            className="absolute inset-0" 
+            style={{ background: "radial-gradient(ellipse at center, transparent 30%, white 90%)" }}
+          ></div>
+        </div>
+
+        <Container className="relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-6 animate-fade-up animate-fade-up-delay-1">
+              FIELD SERVICE & AUTOMATION
+            </p>
+            
+            <h1 className="text-4xl md:text-6xl text-[var(--navy-950)] leading-[1.1] mb-8 animate-fade-up animate-fade-up-delay-2" style={{ fontFamily: "var(--font-instrument-serif), serif" }}>
+              Operations software<br />
+              built for the <span className="text-[var(--navy-500)]">field.</span>
+            </h1>
+            
+            <p className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl mx-auto mb-10 animate-fade-up animate-fade-up-delay-3">
+              Operata builds mobile field service apps and n8n workflow
+              automation for operations teams — purpose-built systems that
+              work without internet and run without manual effort.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-up animate-fade-up-delay-4">
+              <Button 
+                href={siteConfig.links.caseStudies} 
+                variant="primary" 
+                className="w-full sm:w-auto shadow-[0_4px_24px_rgba(10,15,30,0.15)] px-7"
+              >
+                See Our Work
+              </Button>
+              <Button 
+                href={siteConfig.links.contact} 
+                variant="secondary" 
+                className="w-full sm:w-auto px-7"
+              >
+                Get in Touch
+              </Button>
             </div>
-            <div className="relative">
-              <div className="relative aspect-[9/16] max-w-sm mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-200 rounded-3xl transform rotate-3"></div>
-                <div className="relative rounded-3xl shadow-2xl overflow-hidden border-8 border-gray-900 aspect-[9/16] bg-white">
-                  <Image
-                    src="/screenshot-admin.jpeg"
-                    alt="Field service app in action"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
-                  />
-                </div>
-              </div>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-3 text-sm text-[var(--text-muted)] animate-fade-up animate-fade-up-delay-4">
+              <span className="flex items-center gap-1.5">
+                <span className="text-[var(--navy-400)]">✓</span> Real client projects
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="text-[var(--navy-400)]">✓</span> Offline-capable apps
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="text-[var(--navy-400)]">✓</span> Remote · Available worldwide
+              </span>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Who This Is For Section */}
-      <section id="capabilities" className="bg-gray-50 py-20">
+      {/* WHO THIS IS FOR */}
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+          <div className="text-center mb-16">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
               WHO THIS IS FOR
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Built for technical field work
+            <h2 className="text-3xl md:text-5xl text-[var(--navy-950)]" style={{ fontFamily: "var(--font-instrument-serif), serif" }}>
+              Built for teams that work in the field
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -95,69 +90,74 @@ export default function HomePage() {
                 title: "Installation Teams",
                 description:
                   "Standardize setup with digital guides and structured workflows.",
+                icon: (
+                  <svg className="w-6 h-6 text-[var(--navy-500)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                )
               },
               {
                 title: "Field Technicians",
                 description:
                   "Simple tools for site work and accurate data capture.",
+                icon: (
+                  <svg className="w-6 h-6 text-[var(--navy-500)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                )
               },
               {
                 title: "Equipment Deployment",
                 description:
-                  "Track assets with photo-verified logs and serial number validation.",
+                  "Track assets with photo-verified logs and precise validation.",
+                icon: (
+                  <svg className="w-6 h-6 text-[var(--navy-500)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                  </svg>
+                )
               },
               {
                 title: "Operations Managers",
                 description:
-                  "Visibility into field status with structured reports.",
+                  "Visibility into field status with structured digital reports.",
+                icon: (
+                  <svg className="w-6 h-6 text-[var(--navy-500)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                )
               },
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-sm border border-gray-200"
+                className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200"
               >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
+                <div className="w-12 h-12 bg-[var(--navy-50)] rounded-xl flex items-center justify-center mb-6">
+                  {item.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
+                <p className="text-[var(--text-secondary)]">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* The Problem Section */}
-      <section className="bg-white py-20">
+      {/* THE PROBLEM */}
+      <section className="bg-[var(--navy-950)] text-white py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+          <div className="text-center mb-16">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-400)] uppercase tracking-[0.12em] mb-4">
               THE PROBLEM
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-5xl text-white mb-6" style={{ fontFamily: "var(--font-instrument-serif), serif" }}>
               Solving real operational challenges
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
               Reliable data starts with tools that don&apos;t fail in the field. Help
               teams move away from fragile processes.
             </p>
@@ -167,51 +167,43 @@ export default function HomePage() {
               {
                 title: "Paper-based workflows",
                 description:
-                  "Forms that are easily lost, illegible, and require manual re-keying.",
+                  "Forms that are easily lost, illegible, and require manual re-keying into multiple databases.",
+                icon: "📄"
               },
               {
                 title: "Inconsistent documentation",
                 description:
-                  "Missing photos, incomplete checklists, and lack of standardized reporting.",
+                  "Missing photos, incomplete checklists, and lack of standardized compliance reporting.",
+                icon: "📸"
               },
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-red-50 p-6 rounded-lg border border-red-200"
+                className="bg-[var(--navy-800)] p-8 rounded-2xl border border-[var(--navy-700)]"
               >
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-red-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                    />
-                  </svg>
+                <div className="text-3xl mb-5">
+                  {item.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
+                <p className="text-white/70">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* The Solution Section */}
-      <section className="bg-gray-50 py-20">
+      {/* THE SOLUTION */}
+      <section className="bg-white py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+          <div className="text-center mb-16">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
               THE SOLUTION
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl md:text-5xl text-[var(--navy-950)]" style={{ fontFamily: "var(--font-instrument-serif), serif" }}>
               Focused on data integrity
             </h2>
           </div>
@@ -221,163 +213,107 @@ export default function HomePage() {
                 title: "Offline-first design",
                 description:
                   "Apps work without a signal, storing data locally and syncing automatically.",
+                icon: "📶"
               },
               {
-                title: "Checklist-driven workflows",
+                title: "Checklist-driven",
                 description:
-                  "Enforce standard operating procedures through guided UI.",
+                  "Enforce standard operating procedures through a guided digital UI.",
+                icon: "✅"
               },
               {
-                title: "Photo + signature documentation",
+                title: "Visual documentation",
                 description:
-                  "Capture visual evidence and digital sign-offs.",
+                  "Capture and tag visual evidence and digital client sign-offs.",
+                icon: "✍️"
               },
               {
-                title: "Immutable completion records",
+                title: "Immutable records",
                 description:
-                  "Maintain a tamper-proof history of work performed.",
+                  "Maintain a tamper-proof history of complete work performed.",
+                icon: "🔒"
               },
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-sm border border-gray-200"
+                className="bg-[var(--surface-soft)] p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200"
               >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                <div className="text-3xl mb-5">
+                  {item.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
+                <p className="text-[var(--text-secondary)]">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* Visual Proof Section */}
-      <section className="bg-white py-20">
+      {/* SERVICES STRIP */}
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
-              VISUAL PROOF
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              See the system in action
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                src: "/screenshot-checklist.jpeg",
-                title: "Checklist enforcement during installation",
-                description: "Step 3. Verification with checked items",
-              },
-              {
-                src: "/screenshot-signature.jpeg",
-                title: "Client signature at completion",
-                description: "Client Acceptance with signature field",
-              },
-              {
-                src: "/screenshot-adminReassing.jpeg",
-                title: "Offline sync confirmation",
-                description: "Sync Complete - 100% Uploaded",
-              },
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="relative rounded-lg aspect-[9/16] mb-4 overflow-hidden bg-gray-100">
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Production Principles Section */}
-      <section className="bg-gray-900 text-white py-20">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Built with production principles
-              </h2>
-              <p className="text-lg text-gray-300">
-                Engineering-focused development for systems that need to be
-                reliable and secure.
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Card 1 */}
+            <div className="flex-1 bg-white p-8 lg:p-12 rounded-2xl border border-[var(--border)] relative overflow-hidden group hover:shadow-md transition-all duration-200">
+              <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)] opacity-100"></div>
+              <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-5">
+                SERVICE 01
               </p>
+              <h3 className="text-2xl font-semibold mb-4 text-[var(--navy-950)]">
+                Field Service Applications
+              </h3>
+              <p className="text-[var(--text-secondary)] mb-8">
+                Purpose-built mobile apps for installation teams, field
+                technicians, and operations managers. Offline-first,
+                checklist-driven, with digital sign-off and PDF reporting.
+              </p>
+              <Button href="/case-studies/rededge" variant="ghost" className="text-[var(--navy-500)]">
+                View RedEdge Case Study →
+              </Button>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {[
-                "Role-based access control",
-                "Immutable reports after sign-off",
-                "Structured audit history",
-                "Offline-first architecture",
-                "Clear status workflows",
-                "Offline synchronization",
-                "Cross-Platform (iOS & Android)",
-                "Tested on real workflows",
-              ].map((principle, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <svg
-                    className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-sm text-gray-300">{principle}</span>
-                </div>
-              ))}
+
+            {/* Card 2 */}
+            <div className="flex-1 bg-white p-8 lg:p-12 rounded-2xl border border-[var(--border)] relative overflow-hidden group hover:shadow-md transition-all duration-200">
+              <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)] opacity-100"></div>
+              <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-5">
+                SERVICE 02
+              </p>
+              <h3 className="text-2xl font-semibold mb-4 text-[var(--navy-950)]">
+                n8n Workflow Automation
+              </h3>
+              <p className="text-[var(--text-secondary)] mb-8">
+                Connect your tools and eliminate manual handoffs. Booking
+                ingestion, auto-assignment, notifications, and reporting —
+                automated end to end without expensive platforms.
+              </p>
+              <Button href="/case-studies" variant="ghost" className="text-[var(--navy-500)]">
+                View Automation Case Study →
+              </Button>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-white py-20">
+      {/* FINAL CTA SECTION */}
+      <section className="bg-[var(--navy-950)] py-20 lg:py-32">
         <Container>
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Discuss your project
+            <h2 className="text-4xl md:text-6xl text-white mb-6" style={{ fontFamily: "var(--font-instrument-serif), serif" }}>
+              Ready to build something?
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              If you&apos;re planning a field service or installation app, let&apos;s
-              discuss your workflow.
+            <p className="text-lg md:text-xl text-white/70 mb-10">
+              Tell me about your project.
             </p>
-            <Button href={siteConfig.links.contact} variant="primary">
-              Discuss Your Project
+            <Button 
+              href={siteConfig.links.contact} 
+              className="bg-white text-[var(--navy-950)] hover:bg-[var(--surface-soft)] rounded-full px-8 py-4 font-medium transition-colors border border-white"
+            >
+              Get in Touch
             </Button>
-            <p className="text-sm text-gray-500 mt-4">
-              You&apos;ll work directly with the engineer designing and building your
-              system.
-            </p>
           </div>
         </Container>
       </section>

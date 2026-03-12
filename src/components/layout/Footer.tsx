@@ -6,42 +6,67 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-[var(--navy-950)] text-white">
       <Container>
-        <div className="py-12">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div className="text-lg font-semibold text-white">
-              {siteConfig.name}
+        <div className="py-16 md:py-24">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+            {/* Col 1: Brand & Tagline */}
+            <div className="space-y-4">
+              <div
+                className="text-xl flex items-center gap-2"
+                style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+              >
+                <span className="text-[10px] pb-1">■</span>
+                {siteConfig.name}
+              </div>
+              <p className="text-white/70 text-sm max-w-xs">
+                Purpose-built systems for operations teams.
+              </p>
             </div>
 
-            <div className="flex flex-wrap gap-6 text-sm">
-              <Link
-                href="/privacy"
-                className="hover:text-white transition-colors"
-              >
-                Privacy
+            {/* Col 2: Navigation Links */}
+            <div className="flex flex-col gap-3 text-sm">
+              <Link href="/services" className="text-white/70 hover:text-white transition-colors w-fit">
+                Services
               </Link>
-              <Link
-                href="/terms"
-                className="hover:text-white transition-colors"
-              >
-                Terms
+              <Link href="/case-studies" className="text-white/70 hover:text-white transition-colors w-fit">
+                Case Studies
               </Link>
-              <Link
-                href={siteConfig.links.contact}
-                className="hover:text-white transition-colors"
-              >
+              <Link href="/about" className="text-white/70 hover:text-white transition-colors w-fit">
+                About
+              </Link>
+              <Link href={siteConfig.links.contact} className="text-white/70 hover:text-white transition-colors w-fit">
                 Contact
               </Link>
             </div>
 
-            <div className="text-sm">
-              © {currentYear} Field Service App Development.
+            {/* Col 3: Contact Info */}
+            <div className="flex flex-col gap-3 text-sm">
+              <a href="mailto:hello@operata.dev" className="text-white/70 hover:text-white transition-colors w-fit">
+                hello@operata.dev
+              </a>
+              <a href="#" className="text-white/70 hover:text-white transition-colors w-fit">
+                WhatsApp
+              </a>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="py-6 border-t border-[var(--navy-800)] flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs text-white/50">
+          <div>
+            © {currentYear} {siteConfig.name} · Built by Usman Younes
+          </div>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms
+            </Link>
           </div>
         </div>
       </Container>
     </footer>
   );
 }
-

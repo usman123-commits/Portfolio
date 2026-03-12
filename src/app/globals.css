@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --navy-950: #0a0f1e;
+  --navy-900: #0d1526;
+  --navy-800: #112040;
+  --navy-700: #1a3160;
+  --navy-500: #2952a3;
+  --navy-400: #3d6bc4;
+  --navy-100: #e8eef8;
+  --navy-50: #f4f7fd;
+  
+  --accent: #2952a3;
+  --accent-hover: #1a3160;
+  
+  --text-primary: #0a0f1e;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+  
+  --border: #e2e8f0;
+  --border-strong: #cbd5e0;
+
+  /* Deprecated generic vars mapped to text */
+  --background: var(--surface);
+  --foreground: var(--text-primary);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-instrument-serif);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--text-secondary);
+  font-family: var(--font-sans), sans-serif;
+  line-height: 1.7;
+}
+
+h1, h2 {
+  font-family: var(--font-serif), serif;
+  color: var(--text-primary);
+  font-weight: normal;
+}
+
+h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.animate-fade-up-delay-1 {
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.animate-fade-up-delay-2 {
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.animate-fade-up-delay-3 {
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.animate-fade-up-delay-4 {
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+/* Hero background pattern */
+.hero-grid-bg {
+  background-image: linear-gradient(var(--navy-100) 1px, transparent 1px),
+    linear-gradient(90deg, var(--navy-100) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center center;
 }
