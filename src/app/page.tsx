@@ -167,12 +167,12 @@ export default function HomePage() {
               THE PROBLEM
             </p>
             <h2
-              className="text-3xl md:text-4xl text-white mb-4"
+              className="text-4xl text-white text-center mb-4"
               style={{ fontFamily: "var(--font-instrument-serif), serif" }}
             >
               Why paper-based operations fail
             </h2>
-            <p className="text-white/60 text-center max-w-xl mx-auto">
+            <p className="text-white/70 text-center max-w-xl mx-auto mb-12">
               Manual processes don&apos;t scale. Here&apos;s what breaks first.
             </p>
           </div>
@@ -320,7 +320,7 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────── FINAL CTA ─────────────────── */}
-      <section className="bg-[var(--navy-950)] min-h-[400px] flex items-center py-20 lg:py-32">
+      <section className="bg-[var(--navy-950)] py-24">
         <Container>
           <div
             ref={ctaRef}
@@ -329,7 +329,7 @@ export default function HomePage() {
             }`}
           >
             <h2
-              className="text-4xl md:text-5xl lg:text-5xl text-white mb-4"
+              className="text-5xl lg:text-6xl text-white text-center mb-4 font-normal"
               style={{ fontFamily: "var(--font-instrument-serif), serif" }}
             >
               Ready to build something?

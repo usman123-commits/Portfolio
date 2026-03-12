@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="bg-[var(--navy-950)] text-white">
       <Container>
-        <div className="py-16 md:py-24">
+        <div className="py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Col 1: Brand & Tagline */}
             <div className="space-y-4">
@@ -19,13 +19,13 @@ export function Footer() {
                 <span className="text-[10px] pb-1">■</span>
                 {siteConfig.name}
               </div>
-              <p className="text-white/70 text-sm max-w-xs">
+              <p className="text-white/60 text-sm max-w-xs">
                 Purpose-built systems for operations teams.
               </p>
             </div>
 
             {/* Col 2: Navigation Links */}
-            <div className="flex flex-col gap-3 text-sm">
+            <div className="flex flex-col gap-2 text-sm">
               <Link href="/services" className="text-white/70 hover:text-white transition-colors w-fit">
                 Services
               </Link>
@@ -41,7 +41,7 @@ export function Footer() {
             </div>
 
             {/* Col 3: Contact Info */}
-            <div className="flex flex-col gap-3 text-sm">
+            <div className="flex flex-col gap-2 text-sm">
               <a href="mailto:hello@operata.dev" className="text-white/70 hover:text-white transition-colors w-fit">
                 hello@operata.dev
               </a>
