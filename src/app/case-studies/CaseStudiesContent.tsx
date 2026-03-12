@@ -26,7 +26,7 @@ const caseStudies = [
     id: "hostfully",
     tagline: "Workflow Automation",
     badgeStyle: "bg-amber-100 text-amber-700",
-    status: "Live · Real Client",
+    status: "In Development",
     title: "Hostfully — Vacation Rental Automation",
     industry: "Short-Term Rental / Property Management",
     description:

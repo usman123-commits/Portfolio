@@ -34,7 +34,7 @@ export default function RedEdgeCaseStudy() {
           <div className="max-w-4xl mx-auto">
             <Link
               href="/case-studies"
-              className="inline-flex items-center text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--navy-950)] mb-8 transition-colors"
+              className="inline-flex items-center text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--navy-950)] mr-6 mb-8 transition-colors"
             >
               ← All Case Studies
             </Link>

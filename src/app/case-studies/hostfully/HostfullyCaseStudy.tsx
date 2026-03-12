@@ -29,7 +29,7 @@ export default function HostfullyCaseStudy() {
           <div className="max-w-4xl mx-auto">
             <Link
               href="/case-studies"
-              className="inline-flex items-center text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--navy-950)] mb-8 transition-colors"
+              className="inline-flex items-center text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--navy-950)] mr-6 mb-8 transition-colors"
             >
               ← All Case Studies
             </Link>
@@ -43,7 +43,7 @@ export default function HostfullyCaseStudy() {
                 Workflow Automation
               </span>
               <span className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-3 py-1 text-sm font-medium text-[var(--text-secondary)]">
-                Live · Real Client
+                In Development
               </span>
             </div>
 
@@ -55,14 +55,14 @@ export default function HostfullyCaseStudy() {
             </h1>
 
             <p className="text-xl text-[var(--text-secondary)] leading-relaxed mb-10 max-w-3xl">
-              A suite of n8n automation workflows that eliminated manual guest
-              communications, kept bookings in sync, and automatically scheduled
-              cleaning crews — so the property manager could focus on growing the
+              A suite of n8n automation workflows being built to eliminate manual guest
+              communications, keep bookings in sync, and automatically schedule
+              cleaning crews — so the property manager can focus on growing their
               business instead of managing inboxes.
             </p>
 
             <div className="flex flex-wrap gap-3">
-              {['n8n Automation', 'Hostfully API', 'Real Client · Live'].map((tag) => (
+              {['n8n Automation', 'Hostfully API', 'In Development'].map((tag) => (
                 <span
                   key={tag}
                   className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-1.5 text-sm font-medium text-[var(--text-secondary)]"
@@ -162,19 +162,19 @@ export default function HostfullyCaseStudy() {
               <p className="text-4xl md:text-5xl text-white mb-2" style={{ fontFamily: 'var(--font-instrument-serif), serif', color: '#ffffff' }}>
                 {count80}%
               </p>
-              <p className="text-white/70 text-sm">Less manual work per booking</p>
+              <p className="text-white/70 text-sm">Projected reduction in manual work</p>
             </div>
             <div>
               <p className="text-4xl md:text-5xl text-white mb-2" style={{ fontFamily: 'var(--font-instrument-serif), serif', color: '#ffffff' }}>
                 {count3}
               </p>
-              <p className="text-white/70 text-sm">Automated workflows built</p>
+              <p className="text-white/70 text-sm">Planned automated workflows</p>
             </div>
             <div>
               <p className="text-4xl md:text-5xl text-white mb-2" style={{ fontFamily: 'var(--font-instrument-serif), serif', color: '#ffffff' }}>
                 {count2} hrs
               </p>
-              <p className="text-white/70 text-sm">Saved per day on average</p>
+              <p className="text-white/70 text-sm">Expected hours saved per day</p>
             </div>
           </div>
         </Container>
