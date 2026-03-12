@@ -2,6 +2,21 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 
+interface CaseStudy {
+  id: string;
+  tagline: string;
+  badgeColor: "blue" | "amber";
+  status?: string;
+  title: string;
+  industryTag?: string;
+  problem?: string;
+  solution?: string;
+  outcome?: string;
+  description?: string;
+  highlights?: string[];
+  tags?: string[];
+}
+
 export const metadata = {
   title: "Case Studies",
   description:
@@ -9,7 +24,7 @@ export const metadata = {
   alternates: { canonical: `${siteConfig.url}/case-studies` },
 };
 
-const caseStudies = [
+const caseStudies: CaseStudy[] = [
   {
     id: "rental-property-operations",
     tagline: "Workflow Automation",
