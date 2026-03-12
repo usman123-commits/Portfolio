@@ -1,47 +1,59 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
+import { useInView } from "@/hooks/useInView";
 
 export function AboutContent() {
+  const { ref: focusRef, inView: focusInView } = useInView()
+  const { ref: stackRef, inView: stackInView } = useInView()
+  const { ref: processRef, inView: processInView } = useInView()
+  const { ref: ctaRef, inView: ctaInView } = useInView()
+
   return (
     <main className="min-h-screen">
-      {/* 1. Hero Section */}
-      <section className="bg-white py-20 lg:py-32">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+
+      {/* ─── HERO ─── */}
+      <section className="relative bg-white overflow-hidden min-h-[50vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 hero-grid-bg opacity-40" />
+          <div
+            className="absolute inset-0"
+            style={{ background: "radial-gradient(ellipse at center, transparent 30%, white 90%)" }}
+          />
+        </div>
+        <Container className="relative z-10 py-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+              <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-6">
                 ABOUT ME
               </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+              <h1
+                className="text-5xl md:text-6xl lg:text-7xl text-[var(--navy-950)] leading-[1.05] tracking-tight mb-6"
+                style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+              >
                 I Build Systems That Run Without You
               </h1>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                I&apos;m Usman Younes, the developer behind Operata. I build field
-                service applications and n8n workflow automation for operations
-                teams — the kind of teams dealing with manual scheduling,
-                disconnected tools, and processes that only work when someone
-                remembers to follow them. I work remotely with clients
-                internationally, delivering systems that run automatically so
-                your team can focus on the work, not the admin.
+              <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-8 max-w-xl">
+                I&apos;m Usman Younes, the developer behind Operata. I build
+                field service applications and n8n workflow automation for
+                operations teams — the kind of teams dealing with manual
+                scheduling, disconnected tools, and processes that only work
+                when someone remembers to follow them. I work remotely with
+                clients internationally.
               </p>
               <div className="flex flex-wrap gap-3">
-                <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
-                  Field Service & Automation
+                <span className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-2 text-sm font-medium text-[var(--text-secondary)]">
+                  Field Service &amp; Automation
                 </span>
-                <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700">
+                <span className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-2 text-sm font-medium text-[var(--text-secondary)]">
                   Remote · Available Worldwide
                 </span>
               </div>
             </div>
+            {/* Photo placeholder — swap with next/image when ready */}
             <div className="flex justify-center lg:justify-end">
-              {/* TODO: Add your photo here
-                  Recommended: a professional headshot, 400x400px minimum
-                  Use next/image with rounded-full or rounded-2xl */}
-              <div className="w-64 h-64 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 text-sm text-center px-4">
+              <div className="w-64 h-64 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] text-sm text-center px-4">
                 Photo placeholder
               </div>
             </div>
@@ -49,154 +61,193 @@ export function AboutContent() {
         </Container>
       </section>
 
-      {/* 2. Why I Focus On This */}
-      <section className="bg-gray-50 py-20">
+      {/* ─── WHY I FOCUS ON THIS ─── */}
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+          <div className="text-center mb-14">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
               MY FOCUS
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h2
+              className="text-3xl md:text-5xl text-[var(--navy-950)]"
+              style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+            >
               Why Field Service + Automation?
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
-              <div className="text-3xl mb-4" aria-hidden>
-                📱
+
+          <div
+            ref={focusRef}
+            className={`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto transition-all duration-700 ease-out ${
+              focusInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            {[
+              {
+                icon: "📱",
+                title: "Field Service Applications",
+                body: "Field teams have unique constraints — offline environments, fast data capture, photo and signature collection, and audit trails. Generic tools don't cut it. I build purpose-built apps for how field work actually happens.",
+                delay: 0,
+              },
+              {
+                icon: "⚡",
+                title: "n8n Workflow Automation",
+                body: "Most operations teams are sitting on disconnected tools — a CRM here, a form there, emails in between. n8n lets me connect them without locking you into expensive platforms. You own the workflows.",
+                delay: 100,
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200 relative overflow-hidden"
+                style={{ transitionDelay: `${item.delay}ms` }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
+                <div className="w-12 h-12 bg-[var(--navy-50)] rounded-xl flex items-center justify-center mb-6 text-2xl">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-[var(--navy-950)] mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  {item.body}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Field Service Applications
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Field teams have unique constraints — offline environments, fast
-                data capture, photo and signature collection, and audit trails.
-                Generic tools don&apos;t cut it. I build purpose-built apps for how
-                field work actually happens.
-              </p>
-            </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
-              <div className="text-3xl mb-4" aria-hidden>
-                ⚡
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                n8n Workflow Automation
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Most operations teams are sitting on disconnected tools — a CRM
-                here, a form there, emails in between. n8n lets me connect them
-                without locking you into expensive platforms. You own the
-                workflows.
-              </p>
-            </div>
+            ))}
           </div>
         </Container>
       </section>
 
-      {/* 3. Tech Stack */}
-      <section className="bg-white py-20">
+      {/* ─── TECH STACK ─── */}
+      <section className="bg-white py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
-              TOOLS & TECH
+          <div className="text-center mb-14">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
+              TOOLS &amp; TECH
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              What I Work With
+            <h2
+              className="text-3xl md:text-5xl text-[var(--navy-950)]"
+              style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+            >
+              What I work with
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+
+          <div
+            ref={stackRef}
+            className={`grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto transition-all duration-700 ease-out ${
+              stackInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             {[
               { icon: "▲", name: "Next.js", role: "Web Applications" },
               { icon: "🔄", name: "n8n", role: "Workflow Automation" },
               { icon: "📱", name: "React Native", role: "Mobile Apps" },
               { icon: "⚛️", name: "React.js", role: "Frontend" },
               { icon: "🟢", name: "Node.js", role: "Backend & APIs" },
-              { icon: "📧", name: "Google Workspace", role: "Sheets, Calendar, Gmail Integration" },
-            ].map((item) => (
+              { icon: "📧", name: "Google Workspace", role: "Sheets, Calendar, Gmail" },
+            ].map((item, index) => (
               <div
                 key={item.name}
-                className="rounded-xl border border-gray-200 p-4 bg-white"
+                className="rounded-2xl border border-[var(--border)] p-6 bg-[var(--surface-soft)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200"
+                style={{ transitionDelay: `${index * 60}ms` }}
               >
-                <span className="text-2xl block mb-2" aria-hidden>
-                  {item.icon}
-                </span>
-                <p className="font-bold text-gray-900">{item.name}</p>
-                <p className="text-sm text-gray-500">{item.role}</p>
+                <span className="text-2xl block mb-3">{item.icon}</span>
+                <p className="font-semibold text-[var(--navy-950)]">{item.name}</p>
+                <p className="text-sm text-[var(--text-secondary)] mt-1">{item.role}</p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* 4. How I Work (Process) */}
-      <section className="bg-gray-50 py-20">
+      {/* ─── PROCESS ─── */}
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+          <div className="text-center mb-14">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
               PROCESS
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              How a Project Works
+            <h2
+              className="text-3xl md:text-5xl text-[var(--navy-950)]"
+              style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+            >
+              How a project works
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-0 max-w-5xl mx-auto">
+
+          <div
+            ref={processRef}
+            className={`grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto transition-all duration-700 ease-out ${
+              processInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             {[
               {
                 step: 1,
                 title: "Discovery Call",
-                description:
-                  "We talk through your current workflow, what's broken, and what success looks like. Free, no commitment.",
+                description: "We talk through your current workflow, what's broken, and what success looks like. Free, no commitment.",
               },
               {
                 step: 2,
                 title: "Scope & Quote",
-                description:
-                  "I map out exactly what will be built, how long it takes, and what it costs. No surprises.",
+                description: "I map out exactly what will be built, how long it takes, and what it costs. No surprises.",
               },
               {
                 step: 3,
                 title: "Build & Updates",
-                description:
-                  "I build in iterations with regular updates. You see progress throughout, not just at the end.",
+                description: "I build in iterations with regular updates. You see progress throughout, not just at the end.",
               },
               {
                 step: 4,
                 title: "Handoff & Support",
-                description:
-                  "You get the source code, documentation, and 30 days of support after launch.",
+                description: "You get the source code, documentation, and 30 days of support after launch.",
               },
             ].map((item, index) => (
               <div
                 key={item.step}
-                className={`flex flex-col md:px-4 ${index > 0 ? "md:border-l border-dashed border-gray-300" : ""}`}
+                className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200 relative overflow-hidden"
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-lg font-bold mb-3">
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
+                <div className="w-10 h-10 rounded-full bg-[var(--navy-500)] text-white flex items-center justify-center text-sm font-semibold mb-5">
                   {item.step}
                 </div>
-                <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
+                <h3 className="font-semibold text-[var(--navy-950)] mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* 5. CTA Section */}
-      <section className="bg-white py-20">
+      {/* ─── CTA ─── */}
+      <section className="bg-[var(--navy-950)] py-24">
         <Container>
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Ready to Talk?
+          <div
+            ref={ctaRef}
+            className={`text-center max-w-2xl mx-auto transition-all duration-700 ease-out ${
+              ctaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <h2
+              className="text-5xl lg:text-6xl text-white text-center mb-4 font-normal"
+              style={{ fontFamily: "var(--font-instrument-serif), serif", color: "#ffffff" }}
+            >
+              Ready to talk?
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg md:text-xl text-white/70 mb-10">
               Tell me about your project — I&apos;ll reply within 24 hours.
             </p>
-            <Button href={siteConfig.links.contact} variant="primary">
+            <a
+              href={siteConfig.links.contact}
+              className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
+            >
               Start a Conversation →
-            </Button>
-            <p className="text-sm text-gray-500 mt-4">
-              or book a call directly on the contact page
-            </p>
+            </a>
           </div>
         </Container>
       </section>
