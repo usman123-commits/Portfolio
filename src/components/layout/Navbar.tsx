@@ -41,7 +41,7 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 border-b border-[var(--border)] bg-white/95 backdrop-blur-sm">
       <Container>
-        <div className="flex h-16 items-center">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex justify-start min-w-0">
             <Link
               href="/"
