@@ -1,203 +1,264 @@
+'use client'
+
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
-
-export const metadata = {
-  title: "Services",
-  description:
-    "I design workflow systems that help teams capture data, automate operations, and maintain reliable processes.",
-  alternates: { canonical: `${siteConfig.url}/services` },
-};
+import { useInView } from "@/hooks/useInView";
 
 export default function ServicesPage() {
+  const { ref: cardsRef, inView: cardsInView } = useInView()
+  const { ref: approachRef, inView: approachInView } = useInView()
+  const { ref: ctaRef, inView: ctaInView } = useInView()
+
   return (
     <main className="min-h-screen">
-      {/* Section 1 — Page Intro */}
-      <section className="bg-white py-20 lg:py-32">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+
+      {/* ─── HERO ─── */}
+      <section className="relative bg-white overflow-hidden min-h-[50vh] flex items-center">
+        {/* Subtle grid background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 hero-grid-bg opacity-40" />
+          <div
+            className="absolute inset-0"
+            style={{ background: "radial-gradient(ellipse at center, transparent 30%, white 90%)" }}
+          />
+        </div>
+
+        <Container className="relative z-10 py-20">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-6">
+              WHAT WE BUILD
+            </p>
+            <h1
+              className="text-5xl md:text-6xl lg:text-7xl text-[var(--navy-950)] leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+            >
               Services
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-              I design workflow systems that help teams capture data, automate
-              operations, and maintain reliable processes.
+            <p className="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto">
+              Purpose-built systems for operations teams — field service apps
+              and workflow automation that actually work in the real world.
             </p>
           </div>
         </Container>
       </section>
 
-      {/* Section 2 — Service Cards */}
-      <section className="bg-gray-50 py-20">
+      {/* ─── SERVICE CARDS ─── */}
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
         <Container>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="text-center mb-14">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
+              OUR CAPABILITIES
+            </p>
+            <h2
+              className="text-3xl md:text-5xl text-[var(--navy-950)]"
+              style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+            >
+              Two core service areas
+            </h2>
+          </div>
+
+          <div
+            ref={cardsRef}
+            className={`grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-700 ease-out ${
+              cardsInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             {/* Card 1: Field Service Applications */}
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                  />
+            <div className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200 relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
+              <div className="w-12 h-12 bg-[var(--navy-50)] rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-[var(--navy-500)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">
+              <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-3">
+                SERVICE 01
+              </p>
+              <h2
+                className="text-2xl text-[var(--navy-950)] mb-4"
+                style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+              >
                 Field Service Applications
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
                 Custom mobile apps designed for field teams that need reliable
-                data capture and structured workflows.
+                data capture and structured workflows — even without internet.
               </p>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Offline-first mobile apps
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Installation and inspection workflows
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Photo verification and documentation
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Client signature capture
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Admin dashboards
-                </li>
+              <ul className="space-y-3 text-sm text-[var(--text-secondary)] mb-8">
+                {[
+                  "Offline-first mobile apps",
+                  "Installation and inspection workflows",
+                  "Photo verification and GPS-tagged documentation",
+                  "Digital client signature capture",
+                  "Admin dashboards and team management",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--navy-400)] flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
               </ul>
+              <Button
+                href="/case-studies/rededge"
+                variant="ghost"
+                className="text-[var(--navy-500)]"
+              >
+                See RedEdge Case Study →
+              </Button>
             </div>
 
-            {/* Card 2: Workflow Automation (n8n) */}
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
+            {/* Card 2: Workflow Automation */}
+            <div
+              className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200 relative overflow-hidden"
+              style={{ transitionDelay: "100ms" }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
+              <div className="w-12 h-12 bg-[var(--navy-50)] rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-[var(--navy-500)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">
+              <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-3">
+                SERVICE 02
+              </p>
+              <h2
+                className="text-2xl text-[var(--navy-950)] mb-4"
+                style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+              >
                 Workflow Automation (n8n)
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
                 Automation systems that connect tools, APIs, and internal
-                processes into reliable automated workflows.
+                processes into reliable automated workflows — without expensive
+                SaaS platforms.
               </p>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  API integrations
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Data processing pipelines
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Scheduled automation
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Notification and alert systems
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Internal business workflow automation
-                </li>
+              <ul className="space-y-3 text-sm text-[var(--text-secondary)] mb-8">
+                {[
+                  "API integrations and data pipelines",
+                  "Booking ingestion and auto-assignment",
+                  "Notification and alert systems",
+                  "Scheduled reporting automation",
+                  "Internal business workflow automation",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--navy-400)] flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
               </ul>
+              <Button
+                href="/case-studies"
+                variant="ghost"
+                className="text-[var(--navy-500)]"
+              >
+                View Case Studies →
+              </Button>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Section 3 — Choosing the Right Approach */}
-      <section className="bg-white py-20">
+      {/* ─── CHOOSING THE RIGHT APPROACH ─── */}
+      <section className="bg-white py-16 lg:py-24">
         <Container>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                When a Mobile App is the Right Solution
-              </h3>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Field teams collecting data on-site
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Offline work environments
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Photo or signature documentation
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Structured operational workflows
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                When Automation is the Right Solution
-              </h3>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Repetitive digital processes
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Data moving between systems
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  API orchestration
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span>
-                  Reporting automation
-                </li>
-              </ul>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Section 4 — Call to Action */}
-      <section className="bg-gray-50 py-20">
-        <Container>
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Planning a Workflow System?
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Let&apos;s discuss your workflow and find the right approach for your
-              team.
+          <div className="text-center mb-14">
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
+              HOW TO CHOOSE
             </p>
-            <Button href={siteConfig.links.contact} variant="primary">
+            <h2
+              className="text-3xl md:text-5xl text-[var(--navy-950)]"
+              style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+            >
+              Finding the right fit
+            </h2>
+          </div>
+
+          <div
+            ref={approachRef}
+            className={`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto transition-all duration-700 ease-out ${
+              approachInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div className="bg-[var(--surface-soft)] p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200">
+              <div className="w-10 h-10 bg-[var(--navy-50)] rounded-xl flex items-center justify-center mb-5">
+                <svg className="w-5 h-5 text-[var(--navy-500)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-[var(--navy-950)] mb-4">
+                Use a Mobile App when…
+              </h3>
+              <ul className="space-y-3 text-sm text-[var(--text-secondary)]">
+                {[
+                  "Field teams collect data on-site",
+                  "Work happens in offline environments",
+                  "Photos or signatures need capturing",
+                  "Structured checklists drive the workflow",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5">
+                    <span className="text-[var(--navy-400)] text-base leading-none">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              className="bg-[var(--surface-soft)] p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:shadow-md transition-all duration-200"
+              style={{ transitionDelay: "100ms" }}
+            >
+              <div className="w-10 h-10 bg-[var(--navy-50)] rounded-xl flex items-center justify-center mb-5">
+                <svg className="w-5 h-5 text-[var(--navy-500)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-[var(--navy-950)] mb-4">
+                Use Automation when…
+              </h3>
+              <ul className="space-y-3 text-sm text-[var(--text-secondary)]">
+                {[
+                  "Repetitive digital processes need eliminating",
+                  "Data moves between multiple systems",
+                  "APIs or third-party tools need connecting",
+                  "Reports are generated manually today",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5">
+                    <span className="text-[var(--navy-400)] text-base leading-none">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── CTA ─── */}
+      <section className="bg-[var(--navy-950)] py-24">
+        <Container>
+          <div
+            ref={ctaRef}
+            className={`text-center max-w-2xl mx-auto transition-all duration-700 ease-out ${
+              ctaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <h2
+              className="text-5xl lg:text-6xl text-white text-center mb-4 font-normal"
+              style={{ fontFamily: "var(--font-instrument-serif), serif", color: "#ffffff" }}
+            >
+              Planning a workflow system?
+            </h2>
+            <p className="text-lg md:text-xl text-white/70 mb-10">
+              Let&apos;s discuss your workflow and find the right approach for
+              your team.
+            </p>
+            <a
+              href={siteConfig.links.contact}
+              className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
+            >
               Discuss Your Project
-            </Button>
+            </a>
           </div>
         </Container>
       </section>
