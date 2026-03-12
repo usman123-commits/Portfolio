@@ -19,7 +19,7 @@ export default function RedEdgeCaseStudy() {
   const count2 = useCountUp(2, 1500, metricsInView)
   const count100 = useCountUp(100, 1500, metricsInView)
 
-  const { ref: screenshotRef, offset: screenshotOffset } = useParallax(0.08)
+  const { ref: screenshotRef, style: screenshotStyle } = useParallax(0.08)
 
   return (
     <main className="min-h-screen">
@@ -205,7 +205,7 @@ export default function RedEdgeCaseStudy() {
             <div
               ref={screenshotRef}
               className="parallax-element"
-              style={{ transform: `translateY(${screenshotOffset}px)` }}
+              style={screenshotStyle}
             >
             <div
               ref={screenshotsRef}

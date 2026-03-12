@@ -105,6 +105,7 @@ h3, h4, h5, h6 {
 .parallax-element {
   will-change: transform;
   backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 /* Page transition */

@@ -11,7 +11,7 @@ export function AboutContent() {
   const { ref: processRef, inView: processInView } = useInView()
   const { ref: ctaRef, inView: ctaInView } = useInView()
 
-  const { ref: aboutBgRef, offset: aboutBgOffset } = useParallax(0.06)
+  const { ref: aboutBgRef, style: aboutBgStyle } = useParallax(0.06)
 
   return (
     <main className="min-h-screen">
@@ -21,7 +21,7 @@ export function AboutContent() {
         <div 
           ref={aboutBgRef}
           className="absolute inset-0 z-0 parallax-element"
-          style={{ transform: `translateY(${aboutBgOffset}px)` }}
+          style={aboutBgStyle}
         >
           <div className="absolute inset-0 hero-grid-bg opacity-40" />
           <div

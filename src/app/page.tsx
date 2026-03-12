@@ -14,7 +14,7 @@ export default function HomePage() {
   const { ref: servicesRef, inView: servicesInView } = useInView()
   const { ref: ctaRef, inView: ctaInView } = useInView()
 
-  const { ref: gridRef, offset: gridOffset } = useParallax(0.05)
+  const { ref: gridRef, style: gridStyle } = useParallax(0.05)
 
   return (
     <main className="min-h-screen">
@@ -25,7 +25,7 @@ export default function HomePage() {
           <div 
             ref={gridRef}
             className="absolute inset-0 hero-grid-bg opacity-50 parallax-element" 
-            style={{ transform: `translateY(${gridOffset}px)` }}
+            style={gridStyle}
           />
           <div
             className="absolute inset-0"
