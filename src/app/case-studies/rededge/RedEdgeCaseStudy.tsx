@@ -152,23 +152,23 @@ export default function RedEdgeCaseStudy() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
               {[
                 {
-                  src: "/case-studies/rededge/dashboard.jpg",
+                  src: "/case-studies/rededge/dashboard.jpeg",
                   label: "Installer Dashboard",
                 },
                 {
-                  src: "/case-studies/rededge/jobs.jpg",
+                  src: "/case-studies/rededge/jobs.jpeg",
                   label: "Jobs List with Status",
                 },
                 {
-                  src: "/case-studies/rededge/checklist.jpg",
+                  src: "/case-studies/rededge/checklist.jpeg",
                   label: "Checklist with Photo Capture",
                 },
                 {
-                  src: "/case-studies/rededge/photos.jpg",
+                  src: "/case-studies/rededge/photos.jpeg",
                   label: "GPS-Tagged Photo Documentation",
                 },
                 {
-                  src: "/case-studies/rededge/signature.jpg",
+                  src: "/case-studies/rededge/signature.jpeg",
                   label: "Digital Client Sign-Off",
                 },
               ].map((shot, index) => (
@@ -179,12 +179,6 @@ export default function RedEdgeCaseStudy() {
                   }`}
                 >
                   <div className="w-full max-w-[390px] rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] border-[8px] border-gray-900 bg-gray-50 mb-6 relative aspect-[390/844]">
-                    {/* Placeholder for actual images */}
-                    <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-100 flex-col gap-2">
-                       <span className="text-2xl">📱</span>
-                       <span className="text-sm font-medium px-4 text-center">Image Pending<br/><span className="text-xs text-gray-300">{shot.src}</span></span>
-                    </div>
-                    {/* Real Image Tag (uncomment/adjust when images are added)
                     <Image
                       src={shot.src}
                       alt={shot.label}
@@ -192,7 +186,6 @@ export default function RedEdgeCaseStudy() {
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 390px"
                     />
-                    */}
                   </div>
                   <p className="font-medium text-gray-900">{shot.label}</p>
                 </div>
