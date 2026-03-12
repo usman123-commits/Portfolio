@@ -204,7 +204,7 @@ export default function HomePage() {
                   <span className="text-2xl">{item.icon}</span>
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-                <p className="text-white/70">{item.description}</p>
+                <p className="text-white/90 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
