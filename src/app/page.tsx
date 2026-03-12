@@ -167,8 +167,8 @@ export default function HomePage() {
               THE PROBLEM
             </p>
             <h2
-              className="text-4xl text-white text-center mb-4"
-              style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+              className="font-normal text-4xl text-white text-center mb-4"
+              style={{ fontFamily: "var(--font-instrument-serif), serif", color: "#ffffff" }}
             >
               Why paper-based operations fail
             </h2>
@@ -203,8 +203,13 @@ export default function HomePage() {
                 <div className="bg-[var(--navy-500)]/20 rounded-full p-3 w-fit mb-4">
                   <span className="text-2xl">{item.icon}</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-                <p className="text-white/90 leading-relaxed">{item.description}</p>
+                <h3
+                  className="text-white font-semibold text-xl mb-3"
+                  style={{ color: "#ffffff" }}
+                >
+                  {item.title}
+                </h3>
+                <p className="text-white/70 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
