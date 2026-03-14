@@ -113,7 +113,7 @@ export default function RedEdgeCaseStudy() {
       </section>
 
       {/* ─── PROBLEM + SOLUTION ─── */}
-      <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24 animate-section-wrapper">
         <Container>
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Problem */}
@@ -262,7 +262,7 @@ export default function RedEdgeCaseStudy() {
       </section>
 
       {/* ─── KEY FEATURES ─── */}
-      <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24 animate-section-wrapper">
         <Container>
           <div className="max-w-6xl mx-auto">
             <div ref={featuresHeadRef} style={featuresHeadStyle} className="text-center mb-14">

@@ -157,7 +157,7 @@ export function ContactContent() {
       </section>
 
       {/* ─── TWO-COLUMN LAYOUT ─── */}
-      <section className="bg-[var(--surface-soft)] py-12 md:py-20">
+      <section className="bg-[var(--surface-soft)] py-12 md:py-20 animate-section-wrapper">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 max-w-6xl mx-auto">
 

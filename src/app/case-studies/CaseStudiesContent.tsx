@@ -98,7 +98,7 @@ export function CaseStudiesContent() {
       </section>
 
       {/* ─── CASE STUDY CARDS ─── */}
-      <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24 animate-section-wrapper">
         <Container>
           <div ref={projHeadRef} style={projHeadStyle} className="text-center mb-14">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">

@@ -111,7 +111,7 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────── WHO THIS IS FOR ─────────────────── */}
-      <section className="bg-[var(--surface-soft)] py-16 lg:py-24">
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24 animate-section-wrapper">
         <Container>
           <div ref={whoHeadRef} style={whoHeadStyle} className="text-center mb-16">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
@@ -183,7 +183,7 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────── THE PROBLEM ─────────────────── */}
-      <section className="bg-[var(--navy-950)] text-white py-16 lg:py-24">
+      <section className="bg-[var(--navy-950)] text-white py-16 lg:py-24 animate-section-wrapper">
         <Container>
           <div ref={probHeadRef} style={probHeadStyle} className="text-center mb-12">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-400)] uppercase tracking-[0.12em] mb-4">
@@ -236,7 +236,7 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────── THE SOLUTION ─────────────────── */}
-      <section className="bg-white py-16 lg:py-24">
+      <section className="bg-white py-16 lg:py-24 animate-section-wrapper">
         <Container>
           <div ref={solHeadRef} style={solHeadStyle} className="text-center mb-16">
             <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
