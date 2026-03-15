@@ -1,11 +1,11 @@
 // TODO: Update url when domain is purchased
 export const siteConfig = {
-  name: "Operata",
-  title: "Operata — Field Service Apps & n8n Automation",
+  name: "Zelvop",
+  title: "Zelvop — Field Service Apps & n8n Automation",
   description:
-    "Operata builds field service applications and n8n workflow automation for operations teams tired of manual processes.",
+    "Zelvop builds field service applications and n8n workflow automation for operations teams tired of manual processes.",
   author: "Usman Younes",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://operata.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://zelvop.com",
   ogImage: "/og-image.png",
   links: {
     caseStudies: "/case-studies",

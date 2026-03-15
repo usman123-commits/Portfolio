@@ -65,7 +65,7 @@ export function AboutContent() {
                 I Build Systems That Run Without You
               </h1>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-8 max-w-xl">
-                I&apos;m Usman Younes, the developer behind Operata. I build
+                I&apos;m Usman Younes, the developer behind Zelvop. I build
                 field service applications and n8n workflow automation for
                 operations teams — the kind of teams dealing with manual
                 scheduling, disconnected tools, and processes that only work

@@ -2,8 +2,8 @@ import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 
 export const metadata = {
-  title: "Page Not Found | Operata",
-  description: "This page doesn't exist. Head back to Operata to learn about our field service apps and workflow automation services.",
+  title: "Page Not Found | Zelvop",
+  description: "This page doesn't exist. Head back to Zelvop to learn about our field service apps and workflow automation services.",
 };
 
 export default function NotFound() {

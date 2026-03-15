@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/Container";
 
 // TODO: Replace with professional email once domain is purchased
 const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "bgmazak123@gmail.com";
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@zelvop.com";
 
 export const metadata = {
   title: "Terms of Service",

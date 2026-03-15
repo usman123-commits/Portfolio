@@ -71,7 +71,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up animate-fade-up-delay-3">
-              Operata builds mobile field service apps and n8n workflow
+              Zelvop builds mobile field service apps and n8n workflow
               automation for operations teams — purpose-built systems that
               work without internet and run without manual effort.
             </p>

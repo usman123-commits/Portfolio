@@ -15,7 +15,7 @@ export function Footer() {
   const handleCopyEmail = async (e: React.MouseEvent) => {
     e.preventDefault();
     try {
-      await navigator.clipboard.writeText("hello@operata.dev");
+      await navigator.clipboard.writeText("hello@zelvop.com");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -66,7 +66,7 @@ export function Footer() {
                 aria-label="Copy email address"
               >
                 <span className="group-hover:underline decoration-white/30 underline-offset-4">
-                  {copied ? "✓ Copied!" : "hello@operata.dev"}
+                  {copied ? "✓ Copied!" : "hello@zelvop.com"}
                 </span>
               </button>
               

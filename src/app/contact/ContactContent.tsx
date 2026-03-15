@@ -7,7 +7,7 @@ import { useInView } from '@/hooks/useInView'
 const CALENDLY_URL =
   process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/YOUR_USERNAME/30min'
 const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'bgmazak123@gmail.com'
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'hello@zelvop.com'
 const WHATSAPP_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? ''
 const WHATSAPP_URL = WHATSAPP_PHONE ? `https://wa.me/${WHATSAPP_PHONE}` : '#'
 const FORMSPREE_FORM_ID = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID ?? ''

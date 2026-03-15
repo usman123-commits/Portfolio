@@ -31,7 +31,7 @@ export async function GET() {
             marginBottom: 24,
           }}
         >
-          OPERATA
+          ZELVOP
         </div>
         <div
           style={{
