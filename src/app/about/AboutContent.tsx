@@ -1,5 +1,6 @@
 'use client'
 
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
 import { useInView } from "@/hooks/useInView";
@@ -81,11 +82,14 @@ export function AboutContent() {
                 </span>
               </div>
             </div>
-            {/* Photo placeholder — swap with next/image when ready */}
             <div className="flex justify-center lg:justify-end">
-              <div className="w-64 h-64 rounded-2xl bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] text-sm text-center px-4">
-                Photo placeholder
-              </div>
+              <Image
+                src="/profile.jpeg"
+                alt="Profile photo"
+                width={256}
+                height={256}
+                className="w-64 h-64 rounded-2xl object-cover object-top"
+              />
             </div>
           </div>
         </Container>
