@@ -1,0 +1,400 @@
+'use client'
+
+import Link from 'next/link'
+import { Container } from '@/components/ui/Container'
+import { useInView } from '@/hooks/useInView'
+import { useCountUp } from '@/hooks/useCountUp'
+
+export default function OttoCaseStudy() {
+  // Hero
+  const { ref: heroRef, animationStyle: heroStyle } = useInView(0.15, 'up')
+
+  // Problem / Solution
+  const { ref: probRef, animationStyle: probStyle } = useInView(0.15, 'left')
+  const { ref: solRef, animationStyle: solStyle } = useInView(0.15, 'right')
+
+  // The Hard Problem (deep dive section)
+  const { ref: deepHeadRef, animationStyle: deepHeadStyle } = useInView(0.15, 'up')
+  const { ref: deep1Ref, animationStyle: deep1Style } = useInView(0.15, 'left')
+  const { ref: deep2Ref, animationStyle: deep2Style } = useInView(0.15, 'up')
+  const { ref: deep3Ref, animationStyle: deep3Style } = useInView(0.15, 'right')
+
+  // Features
+  const { ref: featuresHeadRef, animationStyle: featuresHeadStyle } = useInView(0.15, 'up')
+  const { ref: feat1Ref, animationStyle: feat1Style } = useInView(0.15, 'left')
+  const { ref: feat2Ref, animationStyle: feat2Style } = useInView(0.15, 'right')
+  const { ref: feat3Ref, animationStyle: feat3Style } = useInView(0.15, 'up')
+  const { ref: feat4Ref, animationStyle: feat4Style } = useInView(0.15, 'left')
+  const { ref: feat5Ref, animationStyle: feat5Style } = useInView(0.15, 'right')
+  const { ref: feat6Ref, animationStyle: feat6Style } = useInView(0.15, 'up')
+  const featRefs = [feat1Ref, feat2Ref, feat3Ref, feat4Ref, feat5Ref, feat6Ref]
+  const featStyles = [feat1Style, feat2Style, feat3Style, feat4Style, feat5Style, feat6Style]
+
+  // Tech Stack
+  const { ref: stackHeadRef, animationStyle: stackHeadStyle } = useInView(0.15, 'up')
+  const { ref: stack1Ref, animationStyle: stack1Style } = useInView(0.15, 'left')
+  const { ref: stack2Ref, animationStyle: stack2Style } = useInView(0.15, 'right')
+  const { ref: stack3Ref, animationStyle: stack3Style } = useInView(0.15, 'up')
+  const stackRefs = [stack1Ref, stack2Ref, stack3Ref]
+  const stackStyles = [stack1Style, stack2Style, stack3Style]
+
+  // CTA
+  const { ref: ctaHeadRef, animationStyle: ctaHeadStyle } = useInView(0.15, 'up')
+  const { ref: ctaBtnRef, animationStyle: ctaBtnStyle } = useInView(0.15, 'up')
+
+  // Metrics
+  const { ref: metricsRef, inView: metricsInView } = useInView(0.3)
+  const count0 = useCountUp(0, 1500, metricsInView)
+  const count100 = useCountUp(100, 1500, metricsInView)
+  const countInf = useCountUp(0, 1500, metricsInView)
+
+  return (
+    <main className="min-h-screen">
+
+      {/* ─── HERO ─── */}
+      <section className="relative bg-white overflow-hidden min-h-[50vh] flex items-center border-b border-[var(--border)]">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 hero-grid-bg opacity-40" />
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, white 90%)' }} />
+        </div>
+        <Container className="relative z-10 py-20">
+          <div className="max-w-4xl mx-auto" ref={heroRef} style={heroStyle}>
+            <Link
+              href="/case-studies"
+              className="inline-flex items-center text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--navy-950)] mr-6 mb-8 transition-colors"
+            >
+              ← All Case Studies
+            </Link>
+
+            <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-6">
+              CASE STUDY · WHATSAPP AUTOMATION
+            </p>
+
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
+                Conversational AI Agent
+              </span>
+              <span className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-3 py-1 text-sm font-medium text-[var(--text-secondary)]">
+                Completed · Real Client
+              </span>
+            </div>
+
+            <h1
+              className="text-4xl md:text-6xl text-[var(--navy-950)] leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+            >
+              OTTO Food on Wheels — WhatsApp Ordering Agent
+            </h1>
+
+            <p className="text-xl text-[var(--text-secondary)] leading-relaxed mb-10 max-w-3xl">
+              A fully automated conversational ordering agent running inside WhatsApp — understanding typed and voice messages, taking orders in Roman Urdu, and preventing duplicate orders without a single manual step.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              {['n8n', 'Claude (Anthropic)', 'OpenAI Whisper', 'Baileys', 'Google Sheets'].map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface-soft)] px-4 py-1.5 text-sm font-medium text-[var(--text-secondary)]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── PROBLEM + SOLUTION ─── */}
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24 animate-section-wrapper">
+        <Container>
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Problem */}
+            <div ref={probRef} style={probStyle} className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-[3px] bg-red-400" />
+              <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
+                THE PROBLEM
+              </p>
+              <h2
+                className="text-2xl md:text-3xl text-[var(--navy-950)] mb-5"
+                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              >
+                Manual orders over WhatsApp
+              </h2>
+              <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
+                OTTO Food on Wheels (Islamabad) handled every customer order manually over WhatsApp — each message read and answered by a person. No automation, no safeguards against double-booked orders, and no visibility into AI usage costs as the business considered scaling.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  'Every order message handled manually by a person',
+                  'No protection against duplicate or double-booked orders',
+                  'No cost tracking for AI-assisted support at scale',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-xs font-bold mt-0.5">✗</span>
+                    <span className="text-[var(--text-secondary)] text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Solution */}
+            <div ref={solRef} style={solStyle} className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
+              <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
+                THE SOLUTION
+              </p>
+              <h2
+                className="text-2xl md:text-3xl text-[var(--navy-950)] mb-5"
+                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              >
+                A conversational agent, end to end
+              </h2>
+              <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
+                A WhatsApp-native ordering agent that understands typed and voice messages, replies naturally in Roman Urdu, browses the menu, takes orders, confirms details, and hands off to a human only when it genuinely can&apos;t help — with no manual babysitting required.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  'Typed and voice (Whisper transcription) messages supported',
+                  'Duplicate order detection via deterministic state machine',
+                  'Per-conversation AI cost tracking built in from day one',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--navy-400)] flex-shrink-0" />
+                    <span className="text-[var(--text-secondary)] text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── RESULTS METRICS BAND ─── */}
+      <section className="bg-[var(--navy-950)] py-16">
+        <Container>
+          <div
+            ref={metricsRef}
+            className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center"
+          >
+            <div>
+              <p className="text-4xl md:text-5xl text-white mb-2" style={{ fontFamily: 'var(--font-instrument-serif), serif', color: '#ffffff' }}>
+                {count0}
+              </p>
+              <p className="text-white/70 text-sm">Manual order interventions needed</p>
+            </div>
+            <div>
+              <p className="text-4xl md:text-5xl text-white mb-2" style={{ fontFamily: 'var(--font-instrument-serif), serif', color: '#ffffff' }}>
+                {count100}%
+              </p>
+              <p className="text-white/70 text-sm">Orders with complete data records</p>
+            </div>
+            <div>
+              <p className="text-4xl md:text-5xl text-white mb-2" style={{ fontFamily: 'var(--font-instrument-serif), serif', color: '#ffffff' }}>
+                {countInf === 0 && metricsInView ? '∞' : (metricsInView ? '∞' : '—')}
+              </p>
+              <p className="text-white/70 text-sm">Duplicate order loops avoided</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── THE HARD PROBLEM (Deep Dive) ─── */}
+      <section className="bg-white py-16 lg:py-24 animate-section-wrapper">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <div ref={deepHeadRef} style={deepHeadStyle} className="text-center mb-14">
+              <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
+                THE HARD PROBLEM
+              </p>
+              <h2
+                className="text-3xl md:text-5xl text-[var(--navy-950)] mb-4"
+                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              >
+                Duplicate orders without annoying customers
+              </h2>
+              <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
+                The obvious approach — asking the AI to remember — broke immediately. Here&apos;s how the real fix worked.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div
+                ref={deep1Ref}
+                style={deep1Style}
+                className="bg-[var(--surface-soft)] p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-red-400" />
+                <div className="text-3xl mb-5">🔁</div>
+                <h3 className="font-semibold text-[var(--navy-950)] text-lg mb-3">The naive approach failed</h3>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  Prompting the AI to &quot;remember if it already confirmed this order&quot; caused an infinite confirmation loop — the agent would re-verify a fact that couldn&apos;t change, producing a bad customer experience every time.
+                </p>
+              </div>
+
+              <div
+                ref={deep2Ref}
+                style={deep2Style}
+                className="bg-[var(--surface-soft)] p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
+                <div className="text-3xl mb-5">⚙️</div>
+                <h3 className="font-semibold text-[var(--navy-950)] text-lg mb-3">State machines, not prompts</h3>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  Duplicate detection state was moved out of the LLM&apos;s conversation memory and into a deterministic workflow layer. The agent flags a possible duplicate once, then hands off. A lightweight classifier — a second, smaller AI call given actual conversation context — interprets the customer&apos;s reply directly.
+                </p>
+              </div>
+
+              <div
+                ref={deep3Ref}
+                style={deep3Style}
+                className="bg-[var(--surface-soft)] p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
+                <div className="text-3xl mb-5">✅</div>
+                <h3 className="font-semibold text-[var(--navy-950)] text-lg mb-3">No duplicated logic, no drift</h3>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  Confirmed orders — whether first-time or duplicate-resolved — re-use the exact same downstream pipeline. When the AI fails to send complete order data, the system flags it in the data itself instead of silently producing bad records.
+                </p>
+              </div>
+            </div>
+
+            {/* Pull quote */}
+            <div className="mt-10 bg-[var(--navy-950)] rounded-2xl p-8 md:p-10">
+              <p className="text-white/90 text-lg md:text-xl leading-relaxed italic text-center max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-instrument-serif), serif' }}>
+                &quot;This is the kind of bug that doesn&apos;t show up in a demo — it shows up after a few dozen real conversations, when customers reply in ways you didn&apos;t script for.&quot;
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── KEY FEATURES ─── */}
+      <section className="bg-[var(--surface-soft)] py-16 lg:py-24 animate-section-wrapper">
+        <Container>
+          <div className="max-w-6xl mx-auto">
+            <div ref={featuresHeadRef} style={featuresHeadStyle} className="text-center mb-14">
+              <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
+                CAPABILITIES
+              </p>
+              <h2
+                className="text-3xl md:text-5xl text-[var(--navy-950)]"
+                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              >
+                What it does
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: '💬', title: 'Natural Roman Urdu Replies', body: 'The agent converses naturally in Roman Urdu — the way real customers text. No rigid command structures, no scripts to memorize.' },
+                { icon: '🎙️', title: 'Voice Note Transcription', body: 'Customers can send WhatsApp voice notes. OpenAI Whisper transcribes them automatically, so the same ordering flow works for voice as for text.' },
+                { icon: '📋', title: 'Menu Q&A and Order-Taking', body: 'Browses the menu, answers questions, takes items, quantities, and delivery details — all within a single natural conversation thread.' },
+                { icon: '🔁', title: 'Duplicate Order Prevention', body: 'A deterministic state machine catches potential duplicate orders before they happen, flagging once and resolving via a lightweight AI classifier — no loops.' },
+                { icon: '🤝', title: 'Graceful Human Handoff', body: 'When the agent genuinely cannot help, it escalates to a human operator cleanly — logging the handoff reason and conversation context into Google Sheets.' },
+                { icon: '💰', title: 'Per-Conversation Cost Tracking', body: 'Every conversation tracks its own AI token usage cost, giving the business full visibility before committing to scale — no billing surprises.' },
+              ].map((feature, i) => (
+                <div
+                  key={i}
+                  ref={featRefs[i]}
+                  className="bg-white p-8 rounded-2xl border border-[var(--border)] hover:border-[var(--navy-400)] hover:-translate-y-1 hover:shadow-lg transition-all duration-200 relative overflow-hidden"
+                  style={{ ...featStyles[i], transitionDelay: `${i * 60}ms` }}
+                >
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--navy-500)]" />
+                  <div className="text-3xl mb-5">{feature.icon}</div>
+                  <h3 className="font-semibold text-[var(--navy-950)] text-lg mb-3">{feature.title}</h3>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{feature.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── TECH STACK ─── */}
+      <section className="bg-white py-16 lg:py-24">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <div ref={stackHeadRef} style={stackHeadStyle} className="text-center mb-14">
+              <p className="inline-block text-[11px] font-semibold text-[var(--navy-500)] uppercase tracking-[0.12em] mb-4">
+                TECHNOLOGY
+              </p>
+              <h2
+                className="text-3xl md:text-5xl text-[var(--navy-950)]"
+                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              >
+                Built with
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: '⚙️',
+                  label: 'Orchestration',
+                  techs: ['n8n', 'Workflow Automation', 'Deterministic State Logic', 'Webhook Triggers'],
+                },
+                {
+                  icon: '🤖',
+                  label: 'AI & Intelligence',
+                  techs: ['Claude (Anthropic API)', 'OpenAI Whisper', 'Tool Use / Function Calling', 'Lightweight Classifier'],
+                },
+                {
+                  icon: '📱',
+                  label: 'Integration & Data',
+                  techs: ['Baileys (WhatsApp Web)', 'Google Sheets', 'Conversation History', 'Cost Tracking'],
+                },
+              ].map((stack, index) => (
+                <div
+                  key={stack.label}
+                  ref={stackRefs[index]}
+                  style={{ ...stackStyles[index], transitionDelay: `${index * 80}ms` }}
+                  className="bg-[var(--surface-soft)] border border-[var(--border)] rounded-2xl p-8 hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+                >
+                  <h3 className="text-xl font-semibold text-[var(--navy-950)] mb-5 flex items-center gap-2">
+                    <span>{stack.icon}</span> {stack.label}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {stack.techs.map((tech) => (
+                      <span
+                        key={tech}
+                        className="inline-flex items-center rounded-full border border-[var(--border)] bg-white px-3 py-1 text-xs font-medium text-[var(--text-secondary)]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ─── CTA ─── */}
+      <section className="bg-[var(--navy-950)] py-24">
+        <Container>
+          <div className="text-center max-w-2xl mx-auto">
+            <h2
+              ref={ctaHeadRef}
+              className="text-5xl lg:text-6xl text-white text-center mb-4 font-normal"
+              style={{ fontFamily: 'var(--font-instrument-serif), serif', color: '#ffffff', ...ctaHeadStyle }}
+            >
+              Need a conversational agent?
+            </h2>
+            <p className="text-lg md:text-xl text-white/70 mb-10">
+              Whether it&apos;s WhatsApp, Telegram, or another channel — let&apos;s build something that actually works in production.
+            </p>
+            <div ref={ctaBtnRef} style={{ ...ctaBtnStyle, transitionDelay: '150ms' }}>
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center bg-white text-[var(--navy-950)] rounded-full px-8 py-4 text-base font-medium hover:bg-[var(--navy-50)] transition-colors duration-200"
+              >
+                Discuss Your Project →
+              </a>
+            </div>
+          </div>
+        </Container>
+      </section>
+    </main>
+  )
+}

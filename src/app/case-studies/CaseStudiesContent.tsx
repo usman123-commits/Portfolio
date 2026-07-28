@@ -39,6 +39,23 @@ const caseStudies = [
     tags: ["n8n", "Hostfully API", "Webhooks", "Google Sheets", "Gmail"],
     href: "/case-studies/hostfully",
   },
+  {
+    id: "otto",
+    tagline: "Conversational AI Agent",
+    badgeStyle: "bg-green-100 text-green-700",
+    status: "Completed · Real Client",
+    title: "OTTO Food on Wheels — WhatsApp Ordering Agent",
+    industry: "Food Delivery / Conversational Commerce · Islamabad",
+    description:
+      "OTTO Food on Wheels was taking every order manually over WhatsApp — a person reading and answering each message with no automation or safeguards. Built a conversational AI agent that runs entirely inside WhatsApp: understands typed and voice messages, replies naturally in Roman Urdu, takes orders, and prevents duplicate bookings — without a single manual step.",
+    highlights: [
+      "Voice note transcription via OpenAI Whisper — same flow for text and audio",
+      "Duplicate order prevention via deterministic state machine, not prompting",
+      "Per-conversation AI cost tracking built in from the start",
+    ],
+    tags: ["n8n", "Claude (Anthropic)", "OpenAI Whisper", "Baileys", "Google Sheets"],
+    href: "/case-studies/otto",
+  },
 ];
 
 export function CaseStudiesContent() {
@@ -51,8 +68,9 @@ export function CaseStudiesContent() {
   // Cards
   const { ref: card1Ref, animationStyle: card1Style } = useInView(0.15, 'left')
   const { ref: card2Ref, animationStyle: card2Style } = useInView(0.15, 'right')
-  const cardRefs = [card1Ref, card2Ref]
-  const cardStyles = [card1Style, card2Style]
+  const { ref: card3Ref, animationStyle: card3Style } = useInView(0.15, 'left')
+  const cardRefs = [card1Ref, card2Ref, card3Ref]
+  const cardStyles = [card1Style, card2Style, card3Style]
 
   // CTA
   const { ref: ctaHeadRef, animationStyle: ctaHeadStyle } = useInView(0.15, 'up')

@@ -8,6 +8,8 @@ type ButtonProps = {
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit";
+  target?: string;
+  rel?: string;
 };
 
 export function Button({
@@ -17,6 +19,8 @@ export function Button({
   className = "",
   onClick,
   type = "button",
+  target,
+  rel,
 }: ButtonProps) {
   const baseStyles =
     "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
@@ -33,7 +37,7 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={combinedClassName}>
+      <Link href={href} className={combinedClassName} target={target} rel={rel}>
         {children}
       </Link>
     );

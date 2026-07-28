@@ -83,9 +83,17 @@ export function Navbar() {
           </div>
 
           <div className="flex justify-end min-w-0 flex-shrink-0 items-center gap-2">
-            <div className="hidden md:block">
-              <Button href={siteConfig.links.contact} variant="primary">
+            <div className="hidden md:flex gap-2">
+              <Button href={siteConfig.links.contact} variant="secondary">
                 Get in Touch
+              </Button>
+              <Button 
+                href="https://www.upwork.com/freelancers/~017518a6a5cece4b57?mp_source=share" 
+                variant="primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Hire me on Upwork
               </Button>
             </div>
             <button
@@ -135,9 +143,18 @@ export function Navbar() {
                 </Link>
               );
             })}
-            <div className="p-4 border-t border-[var(--border)]">
-              <Button href={siteConfig.links.contact} variant="primary" className="w-full justify-center">
+            <div className="p-4 border-t border-[var(--border)] flex flex-col gap-2">
+              <Button href={siteConfig.links.contact} variant="secondary" className="w-full justify-center">
                 Get in Touch
+              </Button>
+              <Button 
+                href="https://www.upwork.com/freelancers/~017518a6a5cece4b57?mp_source=share" 
+                variant="primary" 
+                className="w-full justify-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Hire me on Upwork
               </Button>
             </div>
           </div>
